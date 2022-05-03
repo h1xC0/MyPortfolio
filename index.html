@@ -69,7 +69,6 @@
 		    <front-alert-popup v-if="frontAlertData.show" v-on:close="frontAlertData.show = false" v-bind:message="frontAlertData.message"></front-alert-popup>
 		    <front-confirm-popup v-if="frontConfirmData.show" v-on:close="frontConfirmData.show = false" v-bind:confirm="frontConfirmData.confirm" v-bind:message="frontConfirmData.message"></front-confirm-popup>
 
-		    <portfoliobox-link></portfoliobox-link>
 		    <cookie-message v-if="siteState.EnableCookieMessage === 1"></cookie-message>
 		    <music-player v-if="siteState._showMusicPlayer"></music-player>
 	    </div>
