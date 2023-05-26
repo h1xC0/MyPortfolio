@@ -6,9 +6,9 @@
     <meta http-equiv="content-type" content="text/html;charset=UTF-8">
     <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta name="robots" content="noindex, nofollow">
-    <meta name="generator" content="MyPortfolio">
+    <meta name="generator" content="Portfolio">
 
-    <title id="seoTitle">MyPortfolio</title>
+    <title id="seoTitle">Portfolio</title>
     <meta id="seoDesc" name="description" content="">
     <meta id="seoKeywords" name="keywords" content="">
     <link rel="icon" id="seoSiteIcon" href="">
@@ -29,7 +29,7 @@
 
 
     <!-- source-css -->
-    <link rel="stylesheet" href="https://d2z18g6bj3mwjn.cloudfront.net/pb4/_output/pb4.out.admin.ver.1680683180948.css" />
+    <link rel="stylesheet" href="https://d2z18g6bj3mwjn.cloudfront.net/pb4/_output/pb4.out.admin.ver.1685082387189.css" />
     <!-- /source-css -->
 
 </head>
@@ -53,7 +53,7 @@
             <div class="Page" v-bind:class="{hasLeftMenu : (siteState.MainMenu.MenuType === 'left' && !hideMenu)}">
                 <component v-bind:is="siteState.MainMenu.View" v-bind:main-menu="siteState.MainMenu" v-if="!hideMenu"></component>
 
-                <router-view v-on:hidemenu="doHideMenu"></router-view>
+                <router-view v-on:hidemenu="doHideMenu" v-on:hidefooter="doHideFooter"></router-view>
 
                 <pb-checkout v-if="checkoutState.showCheckout"></pb-checkout>
                 <added-to-cart-popup v-if="checkoutState.showAddedToCart"></added-to-cart-popup>
@@ -70,7 +70,7 @@
 
 
     <!-- source-js-admin1 -->
-    <script src="https://d2z18g6bj3mwjn.cloudfront.net/pb4/_output/pb4.out.admin1.ver.1680683180951.js"></script>
+    <script src="https://d2z18g6bj3mwjn.cloudfront.net/pb4/_output/pb4.out.admin1.ver.1685082387193.js"></script>
     <!-- /source-js-admin1 -->
 
 
@@ -88,6 +88,7 @@
             "SiteId": 3352454,
             "IsStartPage": null,
             "HideMenu": null,
+            "HideFooter": null,
             "Url": "\/dragonpets3d",
             "Title": "Dragon Pets 3D: Coin Mining!",
             "SeoTitle": null,
@@ -102,6 +103,7 @@
                 "SiteId": 3352454,
                 "PageGuid": "m23100FcaR0TycpI",
                 "ProductGuid": null,
+                "FooterId": null,
                 "View": "halfscreen-temp",
                 "ViewType": "Text",
                 "ViewId": "halfscreen",
@@ -178,6 +180,7 @@
             "SiteId": 3352454,
             "IsStartPage": null,
             "HideMenu": null,
+            "HideFooter": null,
             "Url": "\/bluelightinc",
             "Title": "Bluelight Inc",
             "SeoTitle": "BlueLight",
@@ -192,6 +195,7 @@
                 "SiteId": 3352454,
                 "PageGuid": "Ql3cQUZW80MK42yB",
                 "ProductGuid": null,
+                "FooterId": null,
                 "View": "halfscreen-temp",
                 "ViewType": "Text",
                 "ViewId": "halfscreen",
@@ -268,6 +272,7 @@
             "SiteId": 3352454,
             "IsStartPage": null,
             "HideMenu": null,
+            "HideFooter": null,
             "Url": "\/cv",
             "Title": "CV",
             "SeoTitle": null,
@@ -282,6 +287,7 @@
                 "SiteId": 3352454,
                 "PageGuid": "mkA2CHwZ121D2l28",
                 "ProductGuid": null,
+                "FooterId": null,
                 "View": "cv2-temp",
                 "ViewType": "Cv",
                 "ViewId": "cv2",
@@ -566,6 +572,7 @@
             "SiteId": 3352454,
             "IsStartPage": null,
             "HideMenu": null,
+            "HideFooter": null,
             "Url": "\/heroesofmerge",
             "Title": "Heroes Of Merge",
             "SeoTitle": null,
@@ -580,6 +587,7 @@
                 "SiteId": 3352454,
                 "PageGuid": "xn9l7zGLdeWsRFaZ",
                 "ProductGuid": null,
+                "FooterId": null,
                 "View": "halfscreen-temp",
                 "ViewType": "Text",
                 "ViewId": "halfscreen",
@@ -653,6 +661,7 @@
             "SiteId": 3352454,
             "IsStartPage": null,
             "HideMenu": null,
+            "HideFooter": null,
             "Url": "\/pirates3d",
             "Title": "Pirates 3D",
             "SeoTitle": null,
@@ -667,6 +676,7 @@
                 "SiteId": 3352454,
                 "PageGuid": "gtsnCGN4hUTiHU8J",
                 "ProductGuid": null,
+                "FooterId": null,
                 "View": "halfscreen-temp",
                 "ViewType": "Text",
                 "ViewId": "halfscreen",
@@ -740,6 +750,7 @@
             "SiteId": 3352454,
             "IsStartPage": null,
             "HideMenu": null,
+            "HideFooter": null,
             "Url": "\/firefightersimulator",
             "Title": "Firefighter Simulator",
             "SeoTitle": null,
@@ -754,6 +765,7 @@
                 "SiteId": 3352454,
                 "PageGuid": "FKgxXg3hLkd6MHL6",
                 "ProductGuid": null,
+                "FooterId": null,
                 "View": "halfscreen-temp",
                 "ViewType": "Text",
                 "ViewId": "halfscreen",
@@ -839,6 +851,7 @@
             "SiteId": 3352454,
             "IsStartPage": null,
             "HideMenu": null,
+            "HideFooter": null,
             "Url": "\/porfolio",
             "Title": "Porfolio",
             "SeoTitle": null,
@@ -853,6 +866,7 @@
                 "SiteId": 3352454,
                 "PageGuid": "gT8eJBg97A47WHIS",
                 "ProductGuid": null,
+                "FooterId": null,
                 "View": "dynamicgrid-temp",
                 "ViewType": "LinkPage",
                 "ViewId": "dynamicgrid",
@@ -1031,6 +1045,7 @@
             "SiteId": 3352454,
             "IsStartPage": 1,
             "HideMenu": null,
+            "HideFooter": null,
             "Url": "\/main",
             "Title": "Main",
             "SeoTitle": null,
@@ -1045,6 +1060,7 @@
                 "SiteId": 3352454,
                 "PageGuid": "kfZcwclbNAbT0Wog",
                 "ProductGuid": null,
+                "FooterId": null,
                 "View": "cover-temp",
                 "ViewType": "Cover",
                 "ViewId": "textright",
@@ -1166,6 +1182,10 @@
                     "Title": "Portfolio",
                     "Link": "\/porfolio",
                     "PageGuid": "gT8eJBg97A47WHIS"
+                }, {
+                    "Guid": "QaB5VYsUrma6SnTI",
+                    "Title": "CV",
+                    "Link": "\Adrian Miron-compressed.pdf"
                 }],
                 "MenuType": "",
                 "Settings": {
@@ -1214,6 +1234,7 @@
                 }],
                 "ElementsFixed": []
             },
+            "HasFooter": null,
             "GlobalClasses": {
                 "Page": {
                     "background-color": "#ffffff",
@@ -1659,6 +1680,7 @@
             "GoogleTagManagerId": null,
             "MetaVerificationName": null,
             "MetaVerificationContent": null,
+            "Sections": null,
             "Status": null,
             "Situation": null
         });
@@ -1718,6 +1740,8 @@
             "MigratedAt": null,
             "ColorsSettings": ["rgba(255,255,255,0)", "rgba(255,0,0,0)", "rgba(9,18,255,0.31)", "rgba(85,85,85,1)", "rgba(5,5,5,1)", "rgba(144,144,144,0)", "rgba(208,2,27,1)", "rgba(245,166,35,1)", "rgba(248,231,28,1)", "rgba(139,87,42,1)", "rgba(126,211,33,1)", "rgba(65,117,5,1)", "rgba(189,16,224,1)", "rgba(0,0,0,1)", "rgba(255,255,255,1)", "rgba(0,0,0,0)"],
             "FailedPaymentAttempts": null,
+            "SocialMedia": null,
+            "MasterAccountId": null,
             "NrOfClientImages": null,
             "ClientImageQuota": 10,
             "Discount": null,
@@ -1878,7 +1902,7 @@
     <link rel="alternate" type="application/rss+xml" title="" href="/rss" />
 
     <!-- source-js -->
-    <script src="https://d2z18g6bj3mwjn.cloudfront.net/pb4/_output/pb4.out.admin.ver.1680683180948.js"></script>
+    <script src="https://d2z18g6bj3mwjn.cloudfront.net/pb4/_output/pb4.out.admin.ver.1685082387189.js"></script>
     <!-- /source-js -->
 
     <script src="https://www.recaptcha.net/recaptcha/api.js?render=explicit" async defer></script>
@@ -1891,27 +1915,6 @@
         if (utils.environment.isTouch() && utils.environment.wWidth() < 1000) {
             adminApi.adminVisit().then(data => {});
         }
-    </script>
-
-
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-6D8F0YH4X0"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-
-        function gtag() {
-            dataLayer.push(arguments);
-        }
-        gtag('js', new Date());
-
-        gtag('config', 'G-6D8F0YH4X0', {
-            send_page_view: false
-        });
-
-        gtag('event', 'page_view', {
-            page_title: 'Pb4 Admin',
-            page_location: 'https://www.portfoliobox.net/pb4/admin',
-            send_to: 'G-6D8F0YH4X0'
-        });
     </script>
 
 
