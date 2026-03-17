@@ -1,1986 +1,506 @@
-<!doctype html>
-<html id="htmlID" lang="en">
-
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="content-type" content="text/html;charset=UTF-8">
-    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta name="robots" content="noindex, nofollow">
-    <meta name="generator" content="Portfolio">
-
-    <title id="seoTitle">Portfolio</title>
-    <meta id="seoDesc" name="description" content="">
-    <meta id="seoKeywords" name="keywords" content="">
-    <link rel="icon" id="seoSiteIcon" href="">
-
-    <meta id="seoOgTitle" property="og:title" content="">
-    <meta id="seoOgSiteName" property="og:site_name" content="">
-    <meta id="seoOgDesc" property="og:description" content="">
-    <meta id="seoOgImg" property="og:image" content="">
-    <meta id="seoOgUrl" property="og:url" content="">
-    <meta id="seoOgType" property="og:type" content="website" />
-
-    <meta name="twitter:card" content="summary" />
-    <meta name="twitter:site" content="" />
-    <meta id="seoTwitterTitle" name="twitter:title" content="" />
-    <meta id="seoTwitterDescription" name="twitter:description" content="">
-    <meta id="seoTwitterImg" name="twitter:image" content="" />
-
-
-
-    <!-- source-css -->
-    <link rel="stylesheet" href="https://d2z18g6bj3mwjn.cloudfront.net/pb4/_output/pb4.out.admin.ver.1685082387189.css" />
-    <!-- /source-css -->
-
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Adrian Miron Portfolio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        /* Hide scrollbar for nav */
+        .hide-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .hide-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
 </head>
+<body class="min-h-screen bg-slate-950 text-slate-200 font-sans selection:bg-blue-500/30">
 
-<body class="admin mobilePreview">
-    <div class="adminBrowser">
-        <div class="addressBar">
-            <div class="domain"><span class="https"></span></div>
-        </div>
-
-        <div id="frontApp" class="frontApp" v-cloak :class="siteState.MobileClasses && siteState.MobileClasses.Gallery && siteState.MobileClasses.Gallery['items-per-row']  ? siteState.MobileClasses.Gallery['items-per-row'] : ''">
-            <global-styles></global-styles>
-            <child-styles></child-styles>
-            <link-styles></link-styles>
-            <child-link-styles></child-link-styles>
-            <global-styles-mobile></global-styles-mobile>
-            <mobile-css-styles></mobile-css-styles>
-            <customcss-styles></customcss-styles>
-            <google-fonts-styles></google-fonts-styles>
-
-            <div class="Page" v-bind:class="{hasLeftMenu : (siteState.MainMenu.MenuType === 'left' && !hideMenu)}">
-                <component v-bind:is="siteState.MainMenu.View" v-bind:main-menu="siteState.MainMenu" v-if="!hideMenu"></component>
-
-                <router-view v-on:hidemenu="doHideMenu" v-on:hidefooter="doHideFooter"></router-view>
-
-                <pb-checkout v-if="checkoutState.showCheckout"></pb-checkout>
-                <added-to-cart-popup v-if="checkoutState.showAddedToCart"></added-to-cart-popup>
-
-                <front-alert-popup v-if="frontAlertData.show" v-on:close="frontAlertData.show = false" v-bind:message="frontAlertData.message"></front-alert-popup>
-                <front-confirm-popup v-if="frontConfirmData.show" v-on:close="frontConfirmData.show = false" v-bind:confirm="frontConfirmData.confirm" v-bind:message="frontConfirmData.message"></front-confirm-popup>
-
-                <cookie-message v-if="siteState.EnableCookieMessage === 1"></cookie-message>
-                <music-player v-if="siteState._showMusicPlayer"></music-player>
+    <!-- Navigation -->
+    <nav class="fixed top-0 left-0 right-0 bg-slate-950/80 backdrop-blur-md border-b border-slate-800 z-50">
+        <div class="max-w-5xl mx-auto px-6 py-4 flex flex-col md:flex-row justify-between items-center gap-4">
+            <div class="flex items-center space-x-3 text-xl font-bold text-white">
+                <i data-lucide="gamepad-2" class="text-blue-500 w-7 h-7"></i>
+                <button onclick="scrollToSection('about')" data-target="about">
+                <span>Adrian Miron Portfolio</span>
+            </div>
+            <div class="flex space-x-2 overflow-x-auto w-full md:w-auto pb-2 md:pb-0 hide-scrollbar">
+                <button onclick="scrollToSection('about')" data-target="about" class="nav-link bg-blue-600 text-white flex items-center space-x-2 px-4 py-2 rounded-lg transition-all duration-200 w-full md:w-auto">
+                    <i data-lucide="user" class="w-4 h-4"></i>
+                    <span>About</span>
+                </button>
+                <button onclick="scrollToSection('projects')" data-target="projects" class="nav-link text-slate-400 hover:bg-slate-800 hover:text-white flex items-center space-x-2 px-4 py-2 rounded-lg transition-all duration-200 w-full md:w-auto">
+                    <i data-lucide="code-2" class="w-4 h-4"></i>
+                    <span>Projects</span>
+                </button>
+                <button onclick="scrollToSection('experience')" data-target="experience" class="nav-link text-slate-400 hover:bg-slate-800 hover:text-white flex items-center space-x-2 px-4 py-2 rounded-lg transition-all duration-200 w-full md:w-auto">
+                    <i data-lucide="briefcase" class="w-4 h-4"></i>
+                    <span>Experience</span>
+                </button>
             </div>
         </div>
-    </div>
+    </nav>
 
+    <!-- Main Content -->
+    <main class="max-w-5xl mx-auto px-6 pt-32 pb-20 space-y-32">
 
+        <!-- About Section -->
+        <section id="about" class="scroll-mt-32">
+            <div class="flex flex-col md:flex-row gap-12 items-center">
+                <div class="flex-1 space-y-6">
+                    <h1 class="text-4xl md:text-5xl font-extrabold tracking-tight text-white leading-tight">
+                        Crafting Immersive <br />
+                        <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-emerald-400">
+                            Gaming Experiences
+                        </span>
+                    </h1>
+                    <div class="h-1 w-20 bg-blue-500 rounded-full"></div>
+                    <p class="text-lg text-slate-400 leading-relaxed max-w-2xl">
+                        Game Developer with a 4+ year professional journey, spanning the vibrant spectrum of game development from Hyper Casual gems to high-quality AA adventures. I breathe life into games, crafting immersive experiences that captivate players across diverse platforms. Ready to push boundaries and create the next gaming sensation!
+                    </p>
+                    <div class="pt-4 flex gap-4">
+                        <a href="mailto:andreyduck24@outlook.com" class="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg font-medium transition-colors flex items-center gap-2">
+                            <i data-lucide="mail" class="w-4 h-4"></i>
+                            Contact Me
+                        </a>
+                        <button onclick="scrollToSection('projects')" class="bg-slate-800 hover:bg-slate-700 text-white px-6 py-3 rounded-lg font-medium transition-colors flex items-center gap-2 border border-slate-700 hover:border-slate-600">
+                            View Work
+                            <i data-lucide="chevron-right" class="w-4 h-4"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-    <!-- source-js-admin1 -->
-    <script src="https://d2z18g6bj3mwjn.cloudfront.net/pb4/_output/pb4.out.admin1.ver.1685082387193.js"></script>
-    <!-- /source-js-admin1 -->
+        <!-- Projects Section -->
+        <section id="projects" class="scroll-mt-32 space-y-12">
+            <div class="space-y-4">
+                <h2 class="text-3xl font-bold text-white flex items-center gap-3">
+                    <i data-lucide="code-2" class="text-blue-500 w-8 h-8"></i>
+                    Featured Projects
+                </h2>
+                <p class="text-slate-400 max-w-2xl">
+                    A selection of titles I've developed, ranging from Hyper Casual to complex GameFi simulators.
+                </p>
+            </div>
 
+            <div class="grid gap-8">
+                <!-- Project 1 -->
+                <div class="bg-slate-900 border border-slate-800 rounded-2xl overflow-hidden hover:border-slate-700 transition-colors group">
+                    <div class="flex flex-col lg:flex-row h-full">
+                        <div class="lg:w-2/5 overflow-hidden bg-slate-800 relative">
+                            <img src="images/1 image.jpg" alt="Bluelight.inc" class="w-full h-full object-cover min-h-[250px] opacity-80 group-hover:opacity-100 group-hover:scale-105 transition-all duration-500" />
+                            <div class="absolute inset-0 bg-gradient-to-t from-slate-900 via-transparent to-transparent lg:hidden"></div>
+                            <div class="absolute inset-0 bg-gradient-to-r from-transparent via-transparent to-slate-900 hidden lg:block"></div>
+                        </div>
+                        <div class="p-8 lg:w-3/5 flex flex-col justify-center">
+                            <div class="flex flex-wrap gap-4 items-center text-sm text-slate-400 mb-4">
+                                <div class="flex items-center gap-1.5 bg-slate-800/50 px-3 py-1 rounded-full border border-slate-700">
+                                    <i data-lucide="calendar" class="w-3.5 h-3.5"></i> May 2022 – Apr 2023
+                                </div>
+                                <div class="flex items-center gap-1.5 bg-slate-800/50 px-3 py-1 rounded-full border border-slate-700">
+                                    <i data-lucide="building" class="w-3.5 h-3.5"></i> Dragons Lake
+                                </div>
+                            </div>
+                            <h3 class="text-2xl font-bold text-white mb-4 group-hover:text-blue-400 transition-colors">
+                                <a href ="https://youtu.be/y2y5eFSZ4oc?t=155">Bluelight.inc</a>
+                            </h3>
+                            <p class="text-slate-400 leading-relaxed mb-6 text-sm md:text-base">
+                                Bluelight is one of the first new age GameFi projects in a really fun setting. Bluelight is a free-to-play startup simulator in a virtual Silicon Valley that is a mix of business tycoon and challenging collectible card game mechanics with GameFi opportunities. The lore of the game is based on the universe of the Take My Muffin animation series, the first cartoon that was funded entirely by its crypto community.
+                            </p>
+                            <div class="flex flex-wrap gap-2 mt-auto">
+                                <span class="text-xs font-semibold bg-blue-500/10 text-blue-400 px-3 py-1.5 rounded-lg border border-blue-500/20">C#</span>
+                                <span class="text-xs font-semibold bg-blue-500/10 text-blue-400 px-3 py-1.5 rounded-lg border border-blue-500/20">Zenject</span>
+                                <span class="text-xs font-semibold bg-blue-500/10 text-blue-400 px-3 py-1.5 rounded-lg border border-blue-500/20">Unity</span>
+                                <span class="text-xs font-semibold bg-blue-500/10 text-blue-400 px-3 py-1.5 rounded-lg border border-blue-500/20">Tyccon</span>
+                                <span class="text-xs font-semibold bg-blue-500/10 text-blue-400 px-3 py-1.5 rounded-lg border border-blue-500/20">Web3</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
-    <script>
-        window.useCdn = true;
-    </script>
+                <!-- Project 2 -->
+                <div class="bg-slate-900 border border-slate-800 rounded-2xl overflow-hidden hover:border-slate-700 transition-colors group">
+                    <div class="flex flex-col lg:flex-row h-full">
+                        <div class="lg:w-2/5 overflow-hidden bg-slate-800 relative">
+                            <img src="images/2 image.jpg" alt="Heroes Of Merge" class="w-full h-full object-cover min-h-[250px] opacity-80 group-hover:opacity-100 group-hover:scale-105 transition-all duration-500" />
+                            <div class="absolute inset-0 bg-gradient-to-t from-slate-900 via-transparent to-transparent lg:hidden"></div>
+                            <div class="absolute inset-0 bg-gradient-to-r from-transparent via-transparent to-slate-900 hidden lg:block"></div>
+                        </div>
+                        <div class="p-8 lg:w-3/5 flex flex-col justify-center">
+                            <div class="flex flex-wrap gap-4 items-center text-sm text-slate-400 mb-4">
+                                <div class="flex items-center gap-1.5 bg-slate-800/50 px-3 py-1 rounded-full border border-slate-700">
+                                    <i data-lucide="calendar" class="w-3.5 h-3.5"></i> Nov 2021 – Jan 2022
+                                </div>
+                                <div class="flex items-center gap-1.5 bg-slate-800/50 px-3 py-1 rounded-full border border-slate-700">
+                                    <i data-lucide="building" class="w-3.5 h-3.5"></i> OurView Games
+                                </div>
+                            </div>
+                            <h3 class="text-2xl font-bold text-white mb-4 group-hover:text-blue-400 transition-colors">
+                                <a href="https://play.google.com/store/apps/details?id=com.icgames.heroesmerge">Heroes Of Merge</a>
+                            </h3>
+                            <p class="text-slate-400 leading-relaxed mb-6 text-sm md:text-base">
+                                This is a strategic game where you can create troops with different abilities where you can play in your own way to achieve best performance of time spend for each level. Definitely this is not a RTS, but for a casual player is enough to strain a bit. For this project I made the most part of developing: Asset managing, UI programming, Grid System, Optimization, SDK integration.
+                            </p>
+                            <div class="flex flex-wrap gap-2 mt-auto">
+                                <span class="text-xs font-semibold bg-blue-500/10 text-blue-400 px-3 py-1.5 rounded-lg border border-blue-500/20">C#</span>
+                                <span class="text-xs font-semibold bg-blue-500/10 text-blue-400 px-3 py-1.5 rounded-lg border border-blue-500/20">Unity</span>
+                                <span class="text-xs font-semibold bg-blue-500/10 text-blue-400 px-3 py-1.5 rounded-lg border border-blue-500/20">Optimization</span>
+                                <span class="text-xs font-semibold bg-blue-500/10 text-blue-400 px-3 py-1.5 rounded-lg border border-blue-500/20">UI Programming</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
-    <script>
-        window.pb = {
-            isAdmin: true
-        };
+                <!-- Project 3 -->
+                <div class="bg-slate-900 border border-slate-800 rounded-2xl overflow-hidden hover:border-slate-700 transition-colors group">
+                    <div class="flex flex-col lg:flex-row h-full">
+                        <div class="lg:w-2/5 overflow-hidden bg-slate-800 relative">
+                            <img src="images/3 image.jpg" alt="Dragon Pets 3D: Coin Mining!" class="w-full h-full object-cover min-h-[250px] opacity-80 group-hover:opacity-100 group-hover:scale-105 transition-all duration-500" />
+                            <div class="absolute inset-0 bg-gradient-to-t from-slate-900 via-transparent to-transparent lg:hidden"></div>
+                            <div class="absolute inset-0 bg-gradient-to-r from-transparent via-transparent to-slate-900 hidden lg:block"></div>
+                        </div>
+                        <div class="p-8 lg:w-3/5 flex flex-col justify-center">
+                            <div class="flex flex-wrap gap-4 items-center text-sm text-slate-400 mb-4">
+                                <div class="flex items-center gap-1.5 bg-slate-800/50 px-3 py-1 rounded-full border border-slate-700">
+                                    <i data-lucide="calendar" class="w-3.5 h-3.5"></i> Sep 2021 – Oct 2021
+                                </div>
+                                <div class="flex items-center gap-1.5 bg-slate-800/50 px-3 py-1 rounded-full border border-slate-700">
+                                    <i data-lucide="building" class="w-3.5 h-3.5"></i> OurView Games
+                                </div>
+                            </div>
+                            <h3 class="text-2xl font-bold text-white mb-4 group-hover:text-blue-400 transition-colors">
+                                <a href="https://play.google.com/store/apps/details?id=draco.mine.pet.simulator">Dragon Pets 3D: Coin Mining!</a>
+                            </h3>
+                            <p class="text-slate-400 leading-relaxed mb-6 text-sm md:text-base">
+                                Dragon pets it's a game where we can collect pets, upgrade and even create new ones with olden machines. Mostly was made by me (UI/UX implementation, Player/Pets animations, Game Design, Economy balancing, participated on level design and SDK integration)
+                            </p>
+                            <div class="flex flex-wrap gap-2 mt-auto">
+                                <span class="text-xs font-semibold bg-blue-500/10 text-blue-400 px-3 py-1.5 rounded-lg border border-blue-500/20">UI/UX</span>
+                                <span class="text-xs font-semibold bg-blue-500/10 text-blue-400 px-3 py-1.5 rounded-lg border border-blue-500/20">Game Design</span>
+                                <span class="text-xs font-semibold bg-blue-500/10 text-blue-400 px-3 py-1.5 rounded-lg border border-blue-500/20">Economy Balancing</span>
+                                <span class="text-xs font-semibold bg-blue-500/10 text-blue-400 px-3 py-1.5 rounded-lg border border-blue-500/20">Animation</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
-        pages.actions.init.serverPages([{
-            "Guid": "m23100FcaR0TycpI",
-            "SiteId": 3352454,
-            "IsStartPage": null,
-            "HideMenu": null,
-            "HideFooter": null,
-            "Url": "\/dragonpets3d",
-            "Title": "Dragon Pets 3D: Coin Mining!",
-            "SeoTitle": null,
-            "SeoDescription": null,
-            "ShareImage": null,
-            "CreatedAt": "2023-04-11 11:44:34",
-            "Style": null,
-            "UnPublish": null,
-            "Sections": [{
-                "Guid": "p23100ULMmHrBWEX",
-                "Idx": 1,
-                "SiteId": 3352454,
-                "PageGuid": "m23100FcaR0TycpI",
-                "ProductGuid": null,
-                "FooterId": null,
-                "View": "halfscreen-temp",
-                "ViewType": "Text",
-                "ViewId": "halfscreen",
-                "Style": {
-                    "padding-top": "0em",
-                    "padding-bottom": "0",
-                    "padding-left": "0",
-                    "padding-right": "0vw",
-                    "min-height": "75vh",
-                    "background-color": "rgba(0,0,0,1)"
-                },
-                "Settings": {
-                    "animation": ""
-                },
-                "ElementsTop": [{
-                    "Guid": "DHney5ZHBt9hWyTR",
-                    "View": "header-view",
-                    "Content": "\t Dragon Pets 3D: Coin Mining!",
-                    "Style": {
-                        "margin-bottom": "0.7em",
-                        "font-family": "'Josefin Sans', sans-serif",
-                        "color": "rgba(255,255,255,1)",
-                        "font-size": "2.5em"
-                    },
-                    "Settings": {
-                        "animation": "fade-in"
-                    }
-                }, {
-                    "Guid": "fjw0Ko6Rs4QNXxES",
-                    "View": "longtext-view",
-                    "Content": "Dragon pets it's a game where we can collect pets, upgrade and even create new ones with olden machines. Mostly was made by me (UI\/UX implementation, Player\/Pets animations, Game Design, Economy balancing, participated on level design and SDK integration)&nbsp;<br><a href=\"https:\/\/play.google.com\/store\/apps\/details?id=draco.mine.pet.simulator\" target=\"_blank\">Link<\/a><a href=\"https:\/\/play.google.com\/store\/apps\/details?id=draco.mine.pet.simulator\" target=\"_blank\"><\/a>",
-                    "Style": {
-                        "margin-bottom": "1.1em",
-                        "font-family": "'Josefin Sans', sans-serif",
-                        "color": "rgba(255,255,255,1)",
-                        "font-size": "1.3em"
-                    },
-                    "Settings": {
-                        "animation": "fade-in"
-                    }
-                }],
-                "ElementsBottom": null,
-                "ElementsFixed": {
-                    "SingleImageBg1": {
-                        "Guid": "GcVwpvjOlfyEhB6G",
-                        "View": "singleimagebg-view",
-                        "Settings": {
-                            "iframe-hide-controls": "1",
-                            "iframe-auto-play": "1",
-                            "iframe-mute": "1",
-                            "iframe-loop": "1",
-                            "iframe-cover": "1",
-                            "animation": "fade-in",
-                            "hover-transition": "desaturate",
-                            "bg-overlay": "rgba(187,43,43,0)"
-                        },
-                        "Style": {
-                            "background-size": "contain",
-                            "height": "70vh",
-                            "background-position-x": "0%",
-                            "background-position-y": "80%"
-                        },
-                        "Content": {
-                            "Src": "https:\/\/dvqlxo2m2q99q.cloudfront.net\/000_clients\/3352454\/page\/m22122zm83SYmzpw.png",
-                            "Width": 3840,
-                            "Height": 2160
-                        }
-                    }
-                },
-                "Title": null
-            }]
-        }, {
-            "Guid": "Ql3cQUZW80MK42yB",
-            "SiteId": 3352454,
-            "IsStartPage": null,
-            "HideMenu": null,
-            "HideFooter": null,
-            "Url": "\/bluelightinc",
-            "Title": "Bluelight Inc",
-            "SeoTitle": "BlueLight",
-            "SeoDescription": null,
-            "ShareImage": null,
-            "CreatedAt": "2022-05-03 08:41:07",
-            "Style": null,
-            "UnPublish": null,
-            "Sections": [{
-                "Guid": "hpYJJckJjNmk0iK8",
-                "Idx": 1,
-                "SiteId": 3352454,
-                "PageGuid": "Ql3cQUZW80MK42yB",
-                "ProductGuid": null,
-                "FooterId": null,
-                "View": "halfscreen-temp",
-                "ViewType": "Text",
-                "ViewId": "halfscreen",
-                "Style": {
-                    "padding-top": "0em",
-                    "padding-bottom": "0",
-                    "padding-left": "0",
-                    "padding-right": "0vw",
-                    "min-height": "75vh",
-                    "background-color": "rgba(0,0,0,1)"
-                },
-                "Settings": {
-                    "animation": ""
-                },
-                "ElementsTop": [{
-                    "Guid": "DHney5ZHBt9hWyTR",
-                    "View": "header-view",
-                    "Content": "Bluelight Inc.",
-                    "Style": {
-                        "margin-bottom": "0.7em",
-                        "font-family": "'Josefin Sans', sans-serif",
-                        "color": "rgba(255,255,255,1)",
-                        "font-size": "2.5em"
-                    },
-                    "Settings": {
-                        "animation": "fade-in"
-                    }
-                }, {
-                    "Guid": "fjw0Ko6Rs4QNXxES",
-                    "View": "longtext-view",
-                    "Content": "Bluelight is one of the first new age GameFi projects in a really fun setting. Bluelight is a free-to-play startup simulator in a virtual Silicon Valley that is a mix of business tycoon and challenging collectible card game mechanics with GameFi opportunities. The lore of the game is based on the universe of the Take My Muffin animation series, the first cartoon that was funded entirely by its crypto community.<br><a href=\"https:\/\/bluelight.inc\/\" target=\"_blank\">Link<\/a><br>",
-                    "Style": {
-                        "margin-bottom": "1.1em",
-                        "font-family": "'Josefin Sans', sans-serif",
-                        "color": "rgba(255,255,255,1)",
-                        "font-size": "1.3em"
-                    },
-                    "Settings": {
-                        "animation": "fade-in"
-                    }
-                }],
-                "ElementsBottom": null,
-                "ElementsFixed": {
-                    "SingleImageBg1": {
-                        "Guid": "GcVwpvjOlfyEhB6G",
-                        "View": "singleimagebg-view",
-                        "Settings": {
-                            "iframe-hide-controls": "1",
-                            "iframe-auto-play": "1",
-                            "iframe-mute": "1",
-                            "iframe-loop": "1",
-                            "iframe-cover": "1",
-                            "animation": "fade-in",
-                            "hover-transition": "desaturate",
-                            "bg-overlay": "rgba(187,43,43,0)"
-                        },
-                        "Style": {
-                            "background-size": "contain",
-                            "height": "70vh",
-                            "background-position-x": "0%",
-                            "background-position-y": "80%"
-                        },
-                        "Content": {
-                            "Src": "https:\/\/dvqlxo2m2q99q.cloudfront.net\/000_clients\/3352454\/page\/alisa-streltsova-city-1-dc731f.jpg",
-                            "Width": 1920,
-                            "Height": 1284
-                        }
-                    }
-                },
-                "Title": null
-            }]
-        }, {
-            "Guid": "mkA2CHwZ121D2l28",
-            "SiteId": 3352454,
-            "IsStartPage": null,
-            "HideMenu": null,
-            "HideFooter": null,
-            "Url": "\/cv",
-            "Title": "CV",
-            "SeoTitle": null,
-            "SeoDescription": null,
-            "ShareImage": null,
-            "CreatedAt": "2022-03-03 13:23:08",
-            "Style": null,
-            "UnPublish": null,
-            "Sections": [{
-                "Guid": "hMZjcKKR6eiZcAiE",
-                "Idx": 0,
-                "SiteId": 3352454,
-                "PageGuid": "mkA2CHwZ121D2l28",
-                "ProductGuid": null,
-                "FooterId": null,
-                "View": "cv2-temp",
-                "ViewType": "Cv",
-                "ViewId": "cv2",
-                "Style": {
-                    "padding-top": "7vh",
-                    "padding-bottom": "7vh",
-                    "padding-left": "7vw",
-                    "padding-right": "7vw"
-                },
-                "Settings": {
-                    "animation": ""
-                },
-                "ElementsTop": [{
-                    "Guid": "CXV7xDvZLzcQPseR",
-                    "View": "header-view",
-                    "Content": "Experiences",
-                    "Style": {
-                        "margin-bottom": "0.7em",
-                        "align-self": "flex-start",
-                        "font-family": "'Josefin Sans', sans-serif"
-                    },
-                    "Settings": {
-                        "animation": "fade-in"
-                    }
-                }, {
-                    "Guid": "fmMDMm1AkXQSTluS",
-                    "View": "cvlist-view",
-                    "Style": {
-                        "margin-bottom": "3em",
-                        "max-width": "1000px",
-                        "font-family": "'Josefin Sans', sans-serif"
-                    },
-                    "Settings": {
-                        "animation": "fade-in"
-                    },
-                    "Content": [{
-                        "Guid": "OwFeT2jajQ6q6UA1",
-                        "Title": "Midnight Works - Unity Developer",
-                        "Description": "Making prototypes of mobile game, from hyper-casual to midcore",
-                        "Date": "2020 - 2021"
-                    }, {
-                        "Guid": "rDRmogU3Are9Boz2",
-                        "Title": "OurView Games - Unity Developer",
-                        "Description": "Creating polished prototypes of mobile games(Hyper-Casual to Midcore). Involved into all game processes, from gameplay mechanics to UI\/UX.",
-                        "Date": "2021 - current"
-                    }]
-                }, {
-                    "Guid": "g51mQ4TQUmjdRGu9",
-                    "View": "header-view",
-                    "Content": "Educations",
-                    "Style": {
-                        "margin-bottom": "0.7em",
-                        "align-self": "flex-start",
-                        "font-family": "'Josefin Sans', sans-serif"
-                    },
-                    "Settings": {
-                        "animation": "fade-in"
-                    }
-                }, {
-                    "Guid": "Y98AbMFa8XR3NWs3",
-                    "View": "cvlist-view",
-                    "Style": {
-                        "margin-bottom": "3em",
-                        "max-width": "1000px",
-                        "font-family": "'Josefin Sans', sans-serif"
-                    },
-                    "Settings": {
-                        "animation": "fade-in"
-                    },
-                    "Content": [{
-                        "Guid": "xGjTo6AmNck1s1rg",
-                        "Title": "Liceul Teoretic \"Nicolae Iorga\"",
-                        "Description": "",
-                        "Date": "2011-2016"
-                    }, {
-                        "Guid": "TvCHC1tE3Vw1iefp",
-                        "Title": "Centrul de Excelen\u021b\u0103 \u00een Energetic\u0103 \u0219i Electronic\u0103",
-                        "Description": "",
-                        "Date": "2016 - 2020"
-                    }]
-                }],
-                "ElementsBottom": [{
-                    "Guid": "GdPta1TZGBnbeIPT",
-                    "View": "header-view",
-                    "Content": "Contacts",
-                    "Style": {
-                        "margin-bottom": "0.7em",
-                        "align-self": "flex-start",
-                        "font-family": "'Josefin Sans', sans-serif"
-                    },
-                    "Settings": {
-                        "animation": "fade-in"
-                    }
-                }, {
-                    "Guid": "NKj71txbCvPnRAEt",
-                    "View": "shorttext-view",
-                    "Style": {
-                        "align-self": "flex-start",
-                        "font-family": "'Josefin Sans', sans-serif"
-                    },
-                    "Content": "andreyduck24@outlook.com",
-                    "Settings": {
-                        "animation": "fade-in"
-                    }
-                }, {
-                    "Guid": "GYMyvqb280BVGTVQ",
-                    "View": "header-view",
-                    "Content": "Skills",
-                    "Style": {
-                        "margin-bottom": "0em",
-                        "align-self": "flex-start",
-                        "margin-top": "3em",
-                        "font-family": "'Josefin Sans', sans-serif"
-                    },
-                    "Settings": {
-                        "animation": "fade-in"
-                    }
-                }, {
-                    "Guid": "O4UVbVpt9f3pvq2B",
-                    "View": "skills-view",
-                    "Style": {
-                        "margin-top": "1.5em",
-                        "margin-bottom": "3em",
-                        "max-width": "1000px",
-                        "font-family": "'Josefin Sans', sans-serif"
-                    },
-                    "Settings": {
-                        "bar-color": "#089fda",
-                        "bar-background-color": "#D3D3D3",
-                        "animation": "fade-in"
-                    },
-                    "Content": [{
-                        "Guid": "x2gTcNZDRF5odXmd",
-                        "Title": "Unity3D",
-                        "Level": "90"
-                    }, {
-                        "Guid": "koBghQUCsq0g06wP",
-                        "Title": "C#",
-                        "Level": "90"
-                    }, {
-                        "Guid": "HaykQXW55qUsO5zO",
-                        "Title": "C++",
-                        "Level": "61"
-                    }, {
-                        "Guid": "CUzWyRj39avhQp4R",
-                        "Title": "UI\/UX",
-                        "Level": "70"
-                    }, {
-                        "Guid": "NaUZDEj8NvTvBnaI",
-                        "Title": "Optimization",
-                        "Level": "75"
-                    }, {
-                        "Guid": "tmPG852fFOOzdyBs",
-                        "Title": "Patterns Knowledge",
-                        "Level": "66"
-                    }, {
-                        "Guid": "oAZ9mP5SsLX8EoDH",
-                        "Title": "MV* frameworks",
-                        "Level": "77"
-                    }]
-                }, {
-                    "Guid": "rteEpvG7gMODjt93",
-                    "View": "header-view",
-                    "Content": "Languages",
-                    "Style": {
-                        "margin-bottom": "0em",
-                        "align-self": "flex-start",
-                        "font-family": "'Josefin Sans', sans-serif"
-                    },
-                    "Settings": {
-                        "animation": "fade-in"
-                    }
-                }, {
-                    "Guid": "FkedlZpYADRvkslS",
-                    "View": "skills-view",
-                    "Style": {
-                        "margin-top": "1.5em",
-                        "margin-bottom": "2.8em",
-                        "max-width": "1000px",
-                        "font-family": "'Josefin Sans', sans-serif"
-                    },
-                    "Settings": {
-                        "bar-color": "#089fda",
-                        "bar-background-color": "#D3D3D3",
-                        "animation": "fade-in"
-                    },
-                    "Content": [{
-                        "Guid": "gnZIhorkt3GCGDtU",
-                        "Title": "Romanian",
-                        "Level": "100"
-                    }, {
-                        "Guid": "tvlGJWraYQEbKxW5",
-                        "Title": "English",
-                        "Level": "70"
-                    }, {
-                        "Guid": "n728MEWxc1pZ6cIe",
-                        "Title": "Russian",
-                        "Level": "95"
-                    }]
-                }],
-                "ElementsFixed": {
-                    "SingleImage1": {
-                        "Guid": "TmQuT7mhV8dyhItD",
-                        "View": "singleimage-view",
-                        "Settings": {
-                            "shadows": "shadows",
-                            "rounded": "rounded",
-                            "borders": "",
-                            "thumb-size": "",
-                            "iframe-hide-controls": "",
-                            "iframe-auto-play": "",
-                            "iframe-mute": "",
-                            "iframe-loop": "",
-                            "animation": "fade-in",
-                            "hover-transition": "darken",
-                            "thumb-type": "w400"
-                        },
-                        "Style": {
-                            "max-width": "315px",
-                            "align-self": "center",
-                            "margin-bottom": "1em",
-                            "margin-top": "0em"
-                        },
-                        "Content": {
-                            "Src": "https:\/\/dvqlxo2m2q99q.cloudfront.net\/000_clients\/3352454\/page\/d2261k9mho3WRVI.png",
-                            "Width": 1920,
-                            "Height": 1275
-                        }
-                    },
-                    "Header1": {
-                        "Guid": "Qri5szlnMdI5rDgH",
-                        "View": "header-view",
-                        "Content": "Adrian Miron",
-                        "Style": {
-                            "margin-bottom": "0.1em",
-                            "font-family": "'Josefin Sans', sans-serif"
-                        },
-                        "Settings": {
-                            "animation": "fade-in"
-                        }
-                    },
-                    "ShortText1": {
-                        "Guid": "VrCr3Awyu6Rhaez4",
-                        "View": "shorttext-view",
-                        "Style": {
-                            "text-align": "center",
-                            "font-weight": "bold",
-                            "letter-spacing": "0.05em",
-                            "margin-bottom": "2em",
-                            "font-family": "'Actor',sans-serif"
-                        },
-                        "Content": "Game Programmer",
-                        "Settings": {
-                            "animation": "fade-in"
-                        }
-                    },
-                    "LongText1": {
-                        "Guid": "ZoXlDAUlEDwrSqT4",
-                        "View": "longtext-view",
-                        "Content": "I am a game developer from Moldova who creates and experiments in the game creation environment. I am experienced in various games both hypercasual and midcore. I've had a bit of experience on reverse engineering games. We have had commercial projects, both successful and less. I want to achieve more and more complex projects in the Game Dev Industry.<br>",
-                        "Style": {
-                            "margin-bottom": "4em",
-                            "text-align": "justify",
-                            "max-width": "900px",
-                            "font-family": "'Josefin Sans', sans-serif",
-                            "letter-spacing": "-0.04em",
-                            "line-height": "1.95em",
-                            "font-size": "1.11em",
-                            "font-weight": "",
-                            "text-decoration": "none",
-                            "text-transform": "none"
-                        },
-                        "Settings": {
-                            "animation": "fade-in"
-                        }
-                    }
-                },
-                "Title": null
-            }]
-        }, {
-            "Guid": "xn9l7zGLdeWsRFaZ",
-            "SiteId": 3352454,
-            "IsStartPage": null,
-            "HideMenu": null,
-            "HideFooter": null,
-            "Url": "\/heroesofmerge",
-            "Title": "Heroes Of Merge",
-            "SeoTitle": null,
-            "SeoDescription": null,
-            "ShareImage": null,
-            "CreatedAt": "2022-03-03 13:06:27",
-            "Style": null,
-            "UnPublish": null,
-            "Sections": [{
-                "Guid": "d73te0gcIbjJ2Loc",
-                "Idx": 0,
-                "SiteId": 3352454,
-                "PageGuid": "xn9l7zGLdeWsRFaZ",
-                "ProductGuid": null,
-                "FooterId": null,
-                "View": "halfscreen-temp",
-                "ViewType": "Text",
-                "ViewId": "halfscreen",
-                "Style": {
-                    "padding-top": "0",
-                    "padding-bottom": "0",
-                    "padding-left": "0",
-                    "padding-right": "0",
-                    "min-height": "75vh",
-                    "background-color": "rgba(0,0,0,1)"
-                },
-                "Settings": {
-                    "animation": ""
-                },
-                "ElementsTop": [{
-                    "Guid": "eXm8jEDHlC0nCajo",
-                    "View": "header-view",
-                    "Content": "Heroes Of Merge",
-                    "Style": {
-                        "margin-bottom": "0.7em",
-                        "font-family": "'Josefin Sans', sans-serif",
-                        "color": "rgba(255,255,255,1)",
-                        "font-size": "2.5em"
-                    },
-                    "Settings": {
-                        "animation": "fade-in"
-                    }
-                }, {
-                    "Guid": "R91sW3knZ9uIaJJA",
-                    "View": "longtext-view",
-                    "Content": "This is a strategic game where you can create troops with different abilities where you can play in your own way to achieve best performance of time spend for each level. Definitely this is not a RTS, but for a casual player is enough to strain a bit. For this project I made the most part of developing: Asset managing, UI programming, Grid System, Optimization, SDK integration.<br><a href=\"https:\/\/play.google.com\/store\/apps\/details?id=com.icgames.heroesmerge\" target=\"_blank\">Link<\/a><br>",
-                    "Style": {
-                        "margin-bottom": "1.1em",
-                        "font-family": "'Josefin Sans', sans-serif",
-                        "color": "rgba(255,255,255,1)",
-                        "font-size": "1.3em"
-                    },
-                    "Settings": {
-                        "animation": "fade-in"
-                    }
-                }],
-                "ElementsBottom": null,
-                "ElementsFixed": {
-                    "SingleImageBg1": {
-                        "Guid": "ydoQBslg9r3fufot",
-                        "View": "singleimagebg-view",
-                        "Settings": {
-                            "iframe-hide-controls": "1",
-                            "iframe-auto-play": "1",
-                            "iframe-mute": "1",
-                            "iframe-loop": "1",
-                            "iframe-cover": "1",
-                            "animation": "fade-in",
-                            "hover-transition": "none"
-                        },
-                        "Style": {
-                            "background-attachment": "initial",
-                            "background-size": "cover"
-                        },
-                        "Content": {
-                            "Src": "https:\/\/dvqlxo2m2q99q.cloudfront.net\/000_clients\/3352454\/page\/e2261DIkp0pw4iT.png",
-                            "Width": 1024,
-                            "Height": 500
-                        }
-                    }
-                },
-                "Title": null
-            }]
-        }, {
-            "Guid": "gtsnCGN4hUTiHU8J",
-            "SiteId": 3352454,
-            "IsStartPage": null,
-            "HideMenu": null,
-            "HideFooter": null,
-            "Url": "\/pirates3d",
-            "Title": "Pirates 3D",
-            "SeoTitle": null,
-            "SeoDescription": null,
-            "ShareImage": null,
-            "CreatedAt": "2022-03-03 12:57:09",
-            "Style": null,
-            "UnPublish": null,
-            "Sections": [{
-                "Guid": "W2eSJDos8GiYv3lk",
-                "Idx": 0,
-                "SiteId": 3352454,
-                "PageGuid": "gtsnCGN4hUTiHU8J",
-                "ProductGuid": null,
-                "FooterId": null,
-                "View": "halfscreen-temp",
-                "ViewType": "Text",
-                "ViewId": "halfscreen",
-                "Style": {
-                    "padding-top": "0",
-                    "padding-bottom": "0",
-                    "padding-left": "0",
-                    "padding-right": "0",
-                    "min-height": "75vh",
-                    "background-color": "rgba(0,0,0,1)"
-                },
-                "Settings": {
-                    "animation": ""
-                },
-                "ElementsTop": [{
-                    "Guid": "yHdwfswVNxznDHGt",
-                    "View": "header-view",
-                    "Content": "Pirates 3D",
-                    "Style": {
-                        "margin-bottom": "0.7em",
-                        "font-family": "'Josefin Sans', sans-serif",
-                        "color": "rgba(255,255,255,1)",
-                        "font-size": "2.5em"
-                    },
-                    "Settings": {
-                        "animation": "fade-in"
-                    }
-                }, {
-                    "Guid": "WodSngQGFivpPXWJ",
-                    "View": "longtext-view",
-                    "Content": "A pirate game where you can explore islands, kill skeletons, fight bosses and collect quest artifacts. Also, there are shop where you can change your character and weapons. This is a prototype of an RPG game with pirate topic. This game was fully developed and assembled by myself(with help of Unity Asset Store).<br><a href=\"https:\/\/apps.apple.com\/us\/app\/pirates-3d\/id1570415859\" target=\"_blank\">Link<\/a><br>",
-                    "Style": {
-                        "margin-bottom": "1.1em",
-                        "font-family": "'Josefin Sans', sans-serif",
-                        "color": "rgba(255,255,255,1)",
-                        "font-size": "1.3em"
-                    },
-                    "Settings": {
-                        "animation": "fade-in"
-                    }
-                }],
-                "ElementsBottom": null,
-                "ElementsFixed": {
-                    "SingleImageBg1": {
-                        "Guid": "WYwnfwwRqta1fCCv",
-                        "View": "singleimagebg-view",
-                        "Settings": {
-                            "iframe-hide-controls": "1",
-                            "iframe-auto-play": "1",
-                            "iframe-mute": "1",
-                            "iframe-loop": "1",
-                            "iframe-cover": "1",
-                            "animation": "fade-in",
-                            "hover-transition": "none"
-                        },
-                        "Style": {
-                            "background-attachment": "initial",
-                            "background-size": "cover"
-                        },
-                        "Content": {
-                            "Src": "https:\/\/dvqlxo2m2q99q.cloudfront.net\/000_clients\/3352454\/page\/e2261byqtXbtHgZ.png",
-                            "Width": 3840,
-                            "Height": 2160
-                        }
-                    }
-                },
-                "Title": null
-            }]
-        }, {
-            "Guid": "FKgxXg3hLkd6MHL6",
-            "SiteId": 3352454,
-            "IsStartPage": null,
-            "HideMenu": null,
-            "HideFooter": null,
-            "Url": "\/firefightersimulator",
-            "Title": "Firefighter Simulator",
-            "SeoTitle": null,
-            "SeoDescription": null,
-            "ShareImage": null,
-            "CreatedAt": "2022-03-03 12:52:55",
-            "Style": null,
-            "UnPublish": null,
-            "Sections": [{
-                "Guid": "SfsGb5QhSJwa7YLP",
-                "Idx": 0,
-                "SiteId": 3352454,
-                "PageGuid": "FKgxXg3hLkd6MHL6",
-                "ProductGuid": null,
-                "FooterId": null,
-                "View": "halfscreen-temp",
-                "ViewType": "Text",
-                "ViewId": "halfscreen",
-                "Style": {
-                    "padding-top": "0",
-                    "padding-bottom": "0",
-                    "padding-left": "0",
-                    "padding-right": "0",
-                    "min-height": "75vh",
-                    "border-top-width": "0em",
-                    "border-bottom-width": "0em",
-                    "background-size": "",
-                    "background-attachment": "",
-                    "background-image": "url()",
-                    "background-position-y": "0%",
-                    "background-color": "rgba(0,0,0,1)"
-                },
-                "Settings": {
-                    "animation": ""
-                },
-                "ElementsTop": [{
-                    "Guid": "e9DNoIuMNxBzUwtm",
-                    "View": "header-view",
-                    "Content": "Firefighter Simulator",
-                    "Style": {
-                        "margin-bottom": "0.7em",
-                        "font-family": "'Josefin Sans', sans-serif",
-                        "color": "rgba(255,255,255,1)",
-                        "font-size": "2.5em"
-                    },
-                    "Settings": {
-                        "animation": "fade-in"
-                    }
-                }, {
-                    "Guid": "YLIGUx4wn4373Lm5",
-                    "View": "longtext-view",
-                    "Content": "A mobile simulator of an original game that was popular on PC in 2021. You can splash houses with water, burn out from fire and come late to the mission, because of biggest traffic jam in the game. There are few gameplay mechanics compared with PC game, because of company ideology of this game, but at least that was my first game in midcore genre. I worked on game UI(coding part), assembling assets into game level, driving system, player controls, fire extinguish system.<br><a href=\"https:\/\/play.google.com\/store\/apps\/details?id=com.crazydevs.firefightersimulator&amp;hl=ru&amp;gl=US\" target=\"_blank\">Link<\/a><br><a href=\"https:\/\/play.google.com\/store\/apps\/details?id=com.crazydevs.firefightersimulator&amp;hl=ru&amp;gl=US\" target=\"_blank\"><\/a>",
-                    "Style": {
-                        "margin-bottom": "1.1em",
-                        "font-family": "'Josefin Sans', sans-serif",
-                        "color": "rgba(255,255,255,1)",
-                        "font-size": "1.3em"
-                    },
-                    "Settings": {
-                        "animation": "fade-in"
-                    }
-                }],
-                "ElementsBottom": null,
-                "ElementsFixed": {
-                    "SingleImageBg1": {
-                        "Guid": "trDmFKCcwEvuXRwU",
-                        "View": "singleimagebg-view",
-                        "Settings": {
-                            "iframe-hide-controls": "1",
-                            "iframe-auto-play": "1",
-                            "iframe-mute": "1",
-                            "iframe-loop": "1",
-                            "iframe-cover": "1",
-                            "animation": "fade-in",
-                            "hover-transition": "none",
-                            "bg-overlay": "rgba(255,0,0,0)"
-                        },
-                        "Style": {
-                            "background-attachment": "",
-                            "background-size": "contain",
-                            "background-position-x": "0%",
-                            "height": "70vh",
-                            "background-position-y": "0%",
-                            "margin-top": "0em",
-                            "margin-bottom": "0em"
-                        },
-                        "Content": {
-                            "Src": "https:\/\/dvqlxo2m2q99q.cloudfront.net\/000_clients\/3352454\/page\/i2261N6Ffjejxbi.png",
-                            "Width": 1102,
-                            "Height": 620
-                        }
-                    }
-                },
-                "Title": null
-            }]
-        }, {
-            "Guid": "gT8eJBg97A47WHIS",
-            "SiteId": 3352454,
-            "IsStartPage": null,
-            "HideMenu": null,
-            "HideFooter": null,
-            "Url": "\/porfolio",
-            "Title": "Porfolio",
-            "SeoTitle": null,
-            "SeoDescription": null,
-            "ShareImage": null,
-            "CreatedAt": "2022-03-03 12:51:19",
-            "Style": null,
-            "UnPublish": null,
-            "Sections": [{
-                "Guid": "DaAta31J53HyAoC4",
-                "Idx": 0,
-                "SiteId": 3352454,
-                "PageGuid": "gT8eJBg97A47WHIS",
-                "ProductGuid": null,
-                "FooterId": null,
-                "View": "dynamicgrid-temp",
-                "ViewType": "LinkPage",
-                "ViewId": "dynamicgrid",
-                "Style": {
-                    "padding-top": "7vh",
-                    "padding-bottom": "7vh",
-                    "padding-left": "7vw",
-                    "padding-right": "7vw"
-                },
-                "Settings": {
-                    "animation": ""
-                },
-                "ElementsTop": [],
-                "ElementsBottom": null,
-                "ElementsFixed": {
-                    "Items1": {
-                        "Guid": "KEjgSD2s635D9ruC",
-                        "View": "linkpage-view",
-                        "Settings": {
-                            "item-size": "5",
-                            "item-margin": "2.8",
-                            "animation": "focus-in",
-                            "shadows": "shadows",
-                            "rounded": "rounded",
-                            "borders": "",
-                            "figcap-position": "bottom1",
-                            "hover-transition": "desaturate",
-                            "iframe-thumb-play": "1"
-                        },
-                        "Style": {
-                            "margin-top": "4em",
-                            "margin-bottom": "0em"
-                        },
-                        "Content": [{
-                            "Guid": "vxo444mBfvc7dIGA",
-                            "View": "item-view",
-                            "Style": [],
-                            "Content": {
-                                "Link": "\/firefightersimulator",
-                                "Src": "https:\/\/dvqlxo2m2q99q.cloudfront.net\/000_clients\/3352454\/page\/i2261N6Ffjejxbi.png",
-                                "Height": 620,
-                                "Width": 1102,
-                                "Alt": "",
-                                "FigCaptions": [{
-                                    "Guid": "U0R7Dt2lkmCex7sZ",
-                                    "View": "captiontitle-view",
-                                    "Content": "Firefighter Simulator",
-                                    "Style": []
-                                }, {
-                                    "Guid": "zn7HT2IJWuuN38mm",
-                                    "View": "captionsubtitle-view",
-                                    "Content": "Sim Game",
-                                    "Style": []
-                                }, {
-                                    "Guid": "HiSZYZRWhOMVWj7m",
-                                    "View": "captiontext-view",
-                                    "Content": "",
-                                    "Style": []
-                                }]
-                            }
-                        }, {
-                            "Guid": "Idp9MS53ukpTpdMX",
-                            "View": "item-view",
-                            "Style": [],
-                            "Content": {
-                                "Link": "\/pirates3d",
-                                "Src": "https:\/\/dvqlxo2m2q99q.cloudfront.net\/000_clients\/3352454\/page\/e2261byqtXbtHgZ.png",
-                                "Height": 2160,
-                                "Width": 3840,
-                                "Alt": "",
-                                "FigCaptions": [{
-                                    "Guid": "xcykxoOEH17sVmW1",
-                                    "View": "captiontitle-view",
-                                    "Content": "Pirates 3D",
-                                    "Style": []
-                                }, {
-                                    "Guid": "dPuFjvqNsKdjD70w",
-                                    "View": "captionsubtitle-view",
-                                    "Content": "RPG Game",
-                                    "Style": []
-                                }]
-                            }
-                        }, {
-                            "Guid": "cVnAq7FIgLBu0a41",
-                            "View": "item-view",
-                            "Style": [],
-                            "Content": {
-                                "Link": "\/heroesofmerge",
-                                "Src": "https:\/\/dvqlxo2m2q99q.cloudfront.net\/000_clients\/3352454\/page\/e2261DIkp0pw4iT.png",
-                                "Height": 500,
-                                "Width": 1024,
-                                "Alt": "",
-                                "FigCaptions": [{
-                                    "Guid": "K8z2tq8CAeiPUeCX",
-                                    "View": "captiontitle-view",
-                                    "Content": "Heroes Of Magic",
-                                    "Style": []
-                                }, {
-                                    "Guid": "yN8Bt4S93zNSQ6kL",
-                                    "View": "captionsubtitle-view",
-                                    "Content": "Strategy Casual Game",
-                                    "Style": []
-                                }]
-                            }
-                        }, {
-                            "Guid": "OVfZ9ms5x9RFs4wk",
-                            "View": "item-view",
-                            "Style": [],
-                            "Content": {
-                                "Link": "\/dragonpets3d",
-                                "Src": "https:\/\/dvqlxo2m2q99q.cloudfront.net\/000_clients\/3352454\/page\/m22122zm83SYmzpw.png",
-                                "Height": 2160,
-                                "Width": 3840,
-                                "Alt": "",
-                                "FigCaptions": [{
-                                    "Guid": "Q3Hsakdf95yy0Gj1",
-                                    "View": "captiontitle-view",
-                                    "Content": "Dragon Pets 3D: Coin Mining!",
-                                    "Style": []
-                                }, {
-                                    "Guid": "Mn3Aam6eq1oikpJj",
-                                    "View": "captionsubtitle-view",
-                                    "Content": "Collection Game",
-                                    "Style": []
-                                }, {
-                                    "Guid": "gw0H3kAwTdnqymXy",
-                                    "View": "captiontext-view",
-                                    "Content": "Mauris fermentum dictum congue. Vivamus sed porta risus, ut laoreet leo. Aliquam aliquam id diam at tincidunt. Ut adipiscing, mauris et bibendum consequat, nisl nulla vulputate turpis.",
-                                    "Style": []
-                                }, {
-                                    "Guid": "BsgbMA60ZruNmE7K",
-                                    "View": "captionbutton-view",
-                                    "Style": [],
-                                    "Content": "Book now"
-                                }]
-                            }
-                        }, {
-                            "Guid": "ruJi2ZK1HAYG9Ax",
-                            "View": "item-view",
-                            "Style": [],
-                            "Content": {
-                                "Link": "\/bluelightinc",
-                                "Src": "https:\/\/dvqlxo2m2q99q.cloudfront.net\/000_clients\/3352454\/page\/alisa-streltsova-city-1-dc731f.jpg",
-                                "Height": 1284,
-                                "Width": 1920,
-                                "Alt": "",
-                                "FigCaptions": [{
-                                    "Guid": "ePWo6Gs5SysuvkPU",
-                                    "View": "captiontitle-view",
-                                    "Content": "Bluelight Inc",
-                                    "Style": []
-                                }, {
-                                    "Guid": "fIQo2laHpYSr3xIg",
-                                    "View": "captionsubtitle-view",
-                                    "Content": "Card Game",
-                                    "Style": []
-                                }, {
-                                    "Guid": "pQ4BFHuEwzifhVwZ",
-                                    "View": "captiontext-view",
-                                    "Content": "Bluelight is one of the first new age GameFi projects in a really fun setting. Bluelight is a free-to-play startup simulator in a virtual Silicon Valley that is a mix of business tycoon and challenging collectible card game mechanics with GameFi opportunities. The lore of the game is based on the universe of the Take My Muffin animation series, the first cartoon that was funded entirely by its crypto community.<br>",
-                                    "Style": []
-                                }, {
-                                    "Guid": "b2Zna5oG7Cc9l0CN",
-                                    "View": "captionbutton-view",
-                                    "Style": [],
-                                    "Content": "Book now"
-                                }]
-                            }
-                        }]
-                    }
-                },
-                "Title": null
-            }]
-        }, {
-            "Guid": "kfZcwclbNAbT0Wog",
-            "SiteId": 3352454,
-            "IsStartPage": 1,
-            "HideMenu": null,
-            "HideFooter": null,
-            "Url": "\/main",
-            "Title": "Main",
-            "SeoTitle": null,
-            "SeoDescription": null,
-            "ShareImage": null,
-            "CreatedAt": "2022-03-03 12:36:24",
-            "Style": null,
-            "UnPublish": null,
-            "Sections": [{
-                "Guid": "WndbnpnBYqu5nCzJ",
-                "Idx": 0,
-                "SiteId": 3352454,
-                "PageGuid": "kfZcwclbNAbT0Wog",
-                "ProductGuid": null,
-                "FooterId": null,
-                "View": "cover-temp",
-                "ViewType": "Cover",
-                "ViewId": "textright",
-                "Style": {
-                    "padding-top": "7vh",
-                    "padding-bottom": "7vh",
-                    "padding-left": "7vw",
-                    "padding-right": "7vw",
-                    "min-height": "100vh",
-                    "justify-content": "center"
-                },
-                "Settings": {
-                    "animation": "",
-                    "class": "textRight"
-                },
-                "ElementsTop": [{
-                    "Guid": "iWneM1TkTy277ZhC",
-                    "View": "header3-view",
-                    "Content": "Hi, I'm Game Programmer",
-                    "Style": {
-                        "margin-bottom": "0.7em",
-                        "color": "#ffffff",
-                        "font-size": "1.6em",
-                        "font-family": "'Josefin Sans', sans-serif"
-                    },
-                    "Settings": {
-                        "animation": "fade-in"
-                    }
-                }, {
-                    "Guid": "ca1ODZsKJwJQXYhk",
-                    "View": "longtext-view",
-                    "Content": "with passion for games and game developing. I have more than these projects, but I choose the biggest ones. Enjoy, critique and give a feedback at least :D",
-                    "Style": {
-                        "margin-bottom": "1.7em",
-                        "color": "#ffffff",
-                        "margin-top": "1em",
-                        "text-align": "right",
-                        "max-width": "750px",
-                        "font-family": "'Josefin Sans', sans-serif"
-                    },
-                    "Settings": {
-                        "animation": "fade-in"
-                    }
-                }, {
-                    "Guid": "ZVCskTA7P00sN6Ar",
-                    "View": "socialmedia-view",
-                    "Style": {
-                        "font-size": "1.6em",
-                        "margin-top": "0",
-                        "margin-bottom": "0",
-                        "color": "#ffffff"
-                    },
-                    "Settings": {
-                        "icon-type": "regular",
-                        "icon-behaviour": "link",
-                        "animation": "fade-in"
-                    },
-                    "Content": [{
-                        "Guid": "OLD36AdGWZQRp1wT",
-                        "Type": "linkedin",
-                        "Title": "LinkedIn",
-                        "Link": "https:\/\/www.linkedin.com\/in\/adrian-miron-1a00321b4\/"
-                    }, {
-                        "Guid": "PA9e31adHYsl1Qn6",
-                        "Title": "Github",
-                        "Type": "github",
-                        "Link": "https:\/\/github.com\/h1xC0",
-                        "Target": "_blank"
-                    }, {
-                        "Guid": "UG3m2OZUqRvBYQ8j",
-                        "Title": "Outlook",
-                        "Type": "email",
-                        "Link": "mailto: andreyduck24@outlook.com",
-                        "Target": "_blank"
-                    }]
-                }],
-                "ElementsBottom": null,
-                "ElementsFixed": {
-                    "SingleImageBg1": {
-                        "Guid": "mgkQ4vSXMQ1pZ4oY",
-                        "View": "singleimagebg-view",
-                        "Settings": {
-                            "iframe-hide-controls": "1",
-                            "iframe-auto-play": "1",
-                            "iframe-mute": "1",
-                            "iframe-loop": "1",
-                            "iframe-cover": "1",
-                            "animation": "fade-in",
-                            "hover-transition": "none"
-                        },
-                        "Style": {
-                            "background-attachment": "fixed",
-                            "background-size": "cover"
-                        },
-                        "Content": {
-                            "Src": "https:\/\/dvqlxo2m2q99q.cloudfront.net\/000_clients\/3352454\/page\/w2261uuTepzQX3G.png",
-                            "Width": 1920,
-                            "Height": 1080
-                        }
-                    }
-                },
-                "Title": null
-            }]
-        }]);
+                <!-- Project 4 -->
+                <div class="bg-slate-900 border border-slate-800 rounded-2xl overflow-hidden hover:border-slate-700 transition-colors group">
+                    <div class="flex flex-col lg:flex-row h-full">
+                        <div class="lg:w-2/5 overflow-hidden bg-slate-800 relative">
+                            <img src="images/4 image.jpg" alt="Pirates 3D" class="w-full h-full object-cover min-h-[250px] opacity-80 group-hover:opacity-100 group-hover:scale-105 transition-all duration-500" />
+                            <div class="absolute inset-0 bg-gradient-to-t from-slate-900 via-transparent to-transparent lg:hidden"></div>
+                            <div class="absolute inset-0 bg-gradient-to-r from-transparent via-transparent to-slate-900 hidden lg:block"></div>
+                        </div>
+                        <div class="p-8 lg:w-3/5 flex flex-col justify-center">
+                            <div class="flex flex-wrap gap-4 items-center text-sm text-slate-400 mb-4">
+                                <div class="flex items-center gap-1.5 bg-slate-800/50 px-3 py-1 rounded-full border border-slate-700">
+                                    <i data-lucide="calendar" class="w-3.5 h-3.5"></i> Jun 2021 – Jul 2021
+                                </div>
+                                <div class="flex items-center gap-1.5 bg-slate-800/50 px-3 py-1 rounded-full border border-slate-700">
+                                    <i data-lucide="building" class="w-3.5 h-3.5"></i> OurView Games
+                                </div>
+                            </div>
+                            <h3 class="text-2xl font-bold text-white mb-4 group-hover:text-blue-400 transition-colors">
+                                <a href="https://apps.apple.com/us/app/pirates-3d/id1570415859">Pirates 3D</a>
+                            </h3>
+                            <p class="text-slate-400 leading-relaxed mb-6 text-sm md:text-base">
+                                A pirate game where you can explore islands, kill skeletons, fight bosses and collect quest artifacts. Also, there are shop where you can change your character and weapons. This is a prototype of an RPG game with pirate topic. This game was fully developed and assembled by myself(with help of Unity Asset Store).
+                            </p>
+                            <div class="flex flex-wrap gap-2 mt-auto">
+                                <span class="text-xs font-semibold bg-blue-500/10 text-blue-400 px-3 py-1.5 rounded-lg border border-blue-500/20">Unity</span>
+                                <span class="text-xs font-semibold bg-blue-500/10 text-blue-400 px-3 py-1.5 rounded-lg border border-blue-500/20">C#</span>
+                                <span class="text-xs font-semibold bg-blue-500/10 text-blue-400 px-3 py-1.5 rounded-lg border border-blue-500/20">RPG Systems</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
-        site.actions.init.site({
-            "Guid": "l2261IrMFa2tbvH",
-            "Id": 3352454,
-            "IsPublished": null,
-            "HidePbLink": null,
-            "Url": null,
-            "Title": "Adrian Miron",
-            "MainMenu": {
-                "View": "menu1-menu",
-                "ViewId": "centered1",
-                "Guid": "MAINMENU",
-                "Links": [{
-                    "Guid": "ybepa30aFCapV3AT",
-                    "Title": "Portfolio",
-                    "Link": "\/porfolio",
-                    "PageGuid": "gT8eJBg97A47WHIS"
-                }, {
-                    "Guid": "QaB5VYsUrma6SnTI",
-                    "Title": "CV",
-                    "Link": "\Adrian_Current-CV.pdf"
-                }],
-                "MenuType": "",
-                "Settings": {
-                    "class": "centered1"
-                },
-                "Style": {
-                    "padding-bottom": "",
-                    "padding-top": "",
-                    "background-image": "url()",
-                    "background-color": "rgba(255,255,255,1)"
-                },
-                "ElementsTop": [{
-                    "Guid": "MAINMENULOGO",
-                    "View": "logo-view",
-                    "Content": {
-                        "Text": "Adrian Miron",
-                        "Src": "",
-                        "Link": "\/",
-                        "Width": "",
-                        "Height": "",
-                        "ImageHeight": "50px"
-                    },
-                    "Settings": {
-                        "animation": "fade-in"
-                    },
-                    "Style": {
-                        "text-transform": "uppercase",
-                        "letter-spacing": "0.05em",
-                        "text-align": "center",
-                        "font-size": "2em",
-                        "font-family": "'Josefin Sans', sans-serif"
-                    }
-                }],
-                "ElementsBottom": [{
-                    "Guid": "MAINMENULINKS",
-                    "View": "mainmenulinks-view",
-                    "Settings": {
-                        "animation": "fade-in"
-                    },
-                    "Style": {
-                        "margin-top": "1em",
-                        "font-size": "1em",
-                        "letter-spacing": "0.05em",
-                        "font-family": "'Josefin Sans', sans-serif"
-                    }
-                }],
-                "ElementsFixed": []
-            },
-            "HasFooter": null,
-            "GlobalClasses": {
-                "Page": {
-                    "background-color": "#ffffff",
-                    "font-family": "'Cardo',serif",
-                    "color": "#000000",
-                    "min-height": "100%",
-                    "font-size": "100%"
-                },
-                "CaptionTitle": {
-                    "font-size": "1.2em",
-                    "text-transform": "uppercase"
-                },
-                "CaptionSubTitle": {
-                    "padding-top": "0.1em"
-                },
-                "CaptionButton": {
-                    "border-radius": "0.3em",
-                    "background": "transparent",
-                    "border": "1px solid",
-                    "font-size": "1.1em",
-                    "text-decoration": "none",
-                    "letter-spacing": "0.1em",
-                    "text-transform": "uppercase"
-                },
-                "Button": {
-                    "border-radius": "0.2em",
-                    "background": "transparent",
-                    "border": "1px solid",
-                    "font-size": "1.1em",
-                    "text-decoration": "none",
-                    "letter-spacing": "0.1em",
-                    "text-transform": "uppercase"
-                },
-                "BlogButton": {
-                    "border-radius": "0.2em",
-                    "background": "transparent",
-                    "border": "1px solid",
-                    "font-size": "1.1em",
-                    "text-decoration": "none",
-                    "letter-spacing": "0.1em",
-                    "text-transform": "uppercase"
-                },
-                "Border": {
-                    "padding-bottom": "1em",
-                    "border-top": "1px solid",
-                    "width": "100%"
-                },
-                "Link": {
-                    "text-decoration": "none"
-                },
-                "Header": {
-                    "font-size": "1.8em",
-                    "text-transform": "uppercase",
-                    "text-align": "center",
-                    "letter-spacing": "0.05em"
-                },
-                "Header2": {
-                    "font-size": "1.5em",
-                    "text-transform": "uppercase",
-                    "text-align": "center",
-                    "letter-spacing": "0.05em"
-                },
-                "Header3": {
-                    "font-size": "1.2em",
-                    "text-transform": "uppercase",
-                    "text-align": "center",
-                    "letter-spacing": "0.05em"
-                },
-                "LongText": {
-                    "line-height": "1.8em"
-                },
-                "BlogPost": {
-                    "max-width": "1200px",
-                    "margin-top": "3.5em",
-                    "margin-bottom": "3.5em",
-                    "padding-top": "3.5em",
-                    "padding-bottom": "7em",
-                    "border-color": "#dedede",
-                    "border-bottom-width": "1px",
-                    "border-top-width": "0"
-                },
-                "BlogHeader": {
-                    "font-size": "1.8em",
-                    "text-transform": "uppercase",
-                    "align-self": "center",
-                    "letter-spacing": "0.05em",
-                    "text-align": "center"
-                },
-                "BlogDate": {
-                    "margin-top": "0.2em",
-                    "align-self": "center"
-                },
-                "BlogText": {
-                    "margin-top": "2em",
-                    "margin-bottom": "2em",
-                    "line-height": "1.8em"
-                },
-                "BlogShare": {
-                    "align-self": "center",
-                    "margin-top": "2em"
-                },
-                "BlogCommentIcon": {
-                    "align-self": "center",
-                    "margin-top": "0.6em",
-                    "font-size": "2.6em"
-                },
-                "ClientGallery": {
-                    "padding-left": "7vw",
-                    "padding-right": "7vw",
-                    "padding-top": "7vh",
-                    "padding-bottom": "7vh"
-                },
-                "ClientGalleryHeader": {
-                    "font-size": "1.8em",
-                    "text-transform": "uppercase",
-                    "align-self": "center",
-                    "letter-spacing": "0.05em"
-                },
-                "ClientGalleryDate": {
-                    "margin-top": "0.2em",
-                    "align-self": "center"
-                },
-                "ClientGalleryText": {
-                    "margin-top": "2em",
-                    "margin-bottom": "4em",
-                    "max-width": "900px",
-                    "align-self": "center",
-                    "line-height": "1.8em"
-                },
-                "ClientGallerySearchRow": {
-                    "margin-bottom": "5em",
-                    "max-width": "900px",
-                    "align-self": "center"
-                },
-                "ClientGalleryIcons": {
-                    "align-self": "center",
-                    "margin-top": "0.6em",
-                    "font-size": "2.8em"
-                },
-                "ClientGalleryFigureTitle": {
-                    "font-size": "1.1em",
-                    "margin-bottom": "0.2em",
-                    "text-transform": "uppercase"
-                },
-                "Product": {
-                    "padding-left": "7vw",
-                    "padding-right": "7vw",
-                    "padding-top": "7vh",
-                    "padding-bottom": "7vh"
-                },
-                "ProductHeader": {
-                    "font-size": "1.8em",
-                    "text-transform": "uppercase",
-                    "align-self": "center",
-                    "letter-spacing": "0.05em",
-                    "text-align": "center"
-                },
-                "ProductSubHeader": {
-                    "font-size": "1.1em",
-                    "align-self": "center",
-                    "text-align": "center",
-                    "letter-spacing": "0.05em",
-                    "margin-top": "0.5em"
-                },
-                "ProductPrice": {
-                    "font-size": "1.1em",
-                    "text-transform": "uppercase",
-                    "align-self": "center",
-                    "letter-spacing": "0.05em",
-                    "margin-top": "0.5em"
-                },
-                "ProductText": {
-                    "margin-top": "3em",
-                    "margin-bottom": "3em",
-                    "max-width": "900px",
-                    "line-height": "1.8em",
-                    "text-align": "center"
-                },
-                "ProductShare": {
-                    "align-self": "center",
-                    "margin-bottom": "4em"
-                },
-                "ProductButton": {
-                    "border-radius": "0.2em",
-                    "background": "transparent",
-                    "border": "1px solid",
-                    "font-size": "0.9em",
-                    "text-decoration": "none",
-                    "letter-spacing": "0.1em",
-                    "text-transform": "uppercase",
-                    "margin-top": "1.4em"
-                },
-                "ProductVariants": {
-                    "margin-top": "1em",
-                    "min-width": "130px"
-                }
-            },
-            "MobileClasses": null,
-            "ChildClasses": {
-                "DaAta31J53HyAoC4": {
-                    "CaptionTitle": {
-                        "font-family": "'Josefin Sans', sans-serif"
-                    },
-                    "CaptionSubTitle": {
-                        "font-family": "'Alegreya Sans SC',sans-serif"
-                    }
-                }
-            },
-            "MobileStyles": {
-                "SfsGb5QhSJwa7YLP": [],
-                "trDmFKCcwEvuXRwU": {
-                    "height": "0vh"
-                }
-            },
-            "GlobalLinks": {
-                "LongText": {
-                    "a": {
-                        "color": "#089fda"
-                    },
-                    "a:hover": {
-                        "text-decoration": "underline"
-                    }
-                },
-                "Link": {
-                    "a:hover": {
-                        "color": "#089fda"
-                    }
-                },
-                "MainMenuLinks": {
-                    "a:hover": {
-                        "color": "#089fda"
-                    }
-                },
-                "SocialMedia": {
-                    "a:hover": {
-                        "color": "#089fda"
-                    }
-                },
-                "Links": {
-                    "a:hover": {
-                        "text-decoration": "underline"
-                    }
-                }
-            },
-            "ChildLinks": null,
-            "BlogSettings": {
-                "DisableComments": "0",
-                "Url": "blog",
-                "Settings": {
-                    "icon-type": "titles"
-                },
-                "ShareButtons": [{
-                    "Guid": "blogtwitter",
-                    "Type": "twitter",
-                    "Title": "Twitter"
-                }, {
-                    "Guid": "blogpinterest",
-                    "Type": "pinterest",
-                    "Title": "Pinterest"
-                }, {
-                    "Guid": "blogfacebook",
-                    "Type": "facebook",
-                    "Title": "Facebook"
-                }, {
-                    "Guid": "bloglinkedin",
-                    "Type": "linkedin",
-                    "Title": "LinkedIn"
-                }]
-            },
-            "StoreSettings": {
-                "Currency": "USD",
-                "ReturnPolicy": "",
-                "TermsAndConditions": "",
-                "CheckoutEmail": "",
-                "Url": "store",
-                "Settings": {
-                    "hide-share": "0",
-                    "icon-type": "square",
-                    "hide-phone": "",
-                    "hide-address": "",
-                    "hide-zip": "",
-                    "hide-city": "",
-                    "hide-state": "",
-                    "hide-country": "",
-                    "hide-shipping": "",
-                    "hide-message": "",
-                    "hide-news": ""
-                },
-                "ShareButtons": [{
-                    "Guid": "storetwitter",
-                    "Type": "twitter",
-                    "Title": "Twitter"
-                }, {
-                    "Guid": "storepinterest",
-                    "Type": "pinterest",
-                    "Title": "Pinterest"
-                }, {
-                    "Guid": "storefacebook",
-                    "Type": "facebook",
-                    "Title": "Facebook"
-                }, {
-                    "Guid": "storelinkedin",
-                    "Type": "linkedin",
-                    "Title": "LinkedIn"
-                }],
-                "CompanyInfo": {
-                    "Name": "",
-                    "Address": "",
-                    "Country": {
-                        "Name": "",
-                        "Code": ""
-                    },
-                    "Phone": "",
-                    "Email": "",
-                    "OrgId": ""
-                },
-                "Payment": {
-                    "Method": 1,
-                    "ManualPaymentInfo": "",
-                    "EnablePayPal": 0,
-                    "PayPalEmail": "",
-                    "AcceptCreditCard": 0,
-                    "StripeId": "",
-                    "EnableInvoice": 1,
-                    "InvoiceMessage": "",
-                    "PaymentInstructions": "",
-                    "Timeframe": 30
-                },
-                "Shipping": {
-                    "Method": 0,
-                    "Zones": [{
-                        "Guid": "123global",
-                        "DisableToOther": 0,
-                        "Country": {
-                            "Name": "World",
-                            "Code": "WORLD"
-                        },
-                        "WeightRates": [{
-                            "Guid": "everymin",
-                            "Min": 0,
-                            "Max": 2,
-                            "Price": 40
-                        }, {
-                            "Guid": "everymiddle",
-                            "Min": 2,
-                            "Max": 5,
-                            "Price": 80
-                        }, {
-                            "Guid": "everymax",
-                            "Min": 5,
-                            "Max": 10,
-                            "Price": 120
-                        }]
-                    }]
-                },
-                "Taxes": {
-                    "Method": 0,
-                    "Zones": [{
-                        "Guid": "123global",
-                        "DisableToOther": 0,
-                        "TaxPercent": 0,
-                        "Country": {
-                            "Name": "World",
-                            "Code": "WORLD"
-                        }
-                    }]
-                },
-                "Discounts": []
-            },
-            "SeoDescription": null,
-            "SeoLangId": "en",
-            "SeoKeywords": null,
-            "SiteIcon": "https:\/\/dvqlxo2m2q99q.cloudfront.net\/000_clients\/3352454\/page\/j2261n53dNwyIi7.png",
-            "SeoTwitterUsername": null,
-            "ShareImage": null,
-            "DisableRightClick": null,
-            "EnableCookieMessage": null,
-            "CookieMessage": null,
-            "CustomCss": null,
-            "GoogleFonts": [{
-                "family": "'Montserrat',sans-serif",
-                "title": "Montserrat",
-                "occurrences": 1,
-                "type": "google"
-            }, {
-                "family": "'Cardo',serif",
-                "title": "Cardo",
-                "occurrences": 1,
-                "type": "google"
-            }, {
-                "family": "'Bangers',cursive",
-                "title": "Bangers",
-                "occurrences": 1,
-                "type": "google"
-            }, {
-                "family": "'Courgette',cursive",
-                "title": "Courgette",
-                "occurrences": 1,
-                "type": "google"
-            }, {
-                "family": "'Chivo',sans-serif",
-                "title": "Chivo",
-                "occurrences": 1,
-                "type": "google"
-            }, {
-                "family": "'Crimson Text',serif",
-                "title": "Crimson Text",
-                "occurrences": 1,
-                "type": "google"
-            }, {
-                "family": "'Josefin Sans', sans-serif",
-                "title": "Josefin Sans",
-                "occurrences": 29,
-                "type": "google"
-            }, {
-                "family": "'Electrolize',sans-serif",
-                "title": "Electrolize",
-                "occurrences": 1,
-                "type": "google"
-            }, {
-                "family": "'Fira Sans',sans-serif",
-                "title": "Fira Sans",
-                "occurrences": 1,
-                "type": "google"
-            }, {
-                "family": "'Archivo Narrow',sans-serif",
-                "title": "Archivo Narrow",
-                "occurrences": 2,
-                "type": "google"
-            }, {
-                "family": "'Alegreya Sans SC',sans-serif",
-                "title": "Alegreya Sans SC",
-                "occurrences": 1,
-                "type": "google"
-            }, {
-                "family": "'Actor',sans-serif",
-                "title": "Actor",
-                "occurrences": 1,
-                "type": "google"
-            }],
-            "GoogleSubset": null,
-            "GoogleAnalyticsId": null,
-            "GoogleTagManagerId": null,
-            "MetaVerificationName": null,
-            "MetaVerificationContent": null,
-            "Sections": null,
-            "Status": null,
-            "Situation": null
-        });
-        checkoutStore.actions.init();
+                <!-- Project 5 -->
+                <div class="bg-slate-900 border border-slate-800 rounded-2xl overflow-hidden hover:border-slate-700 transition-colors group">
+                    <div class="flex flex-col lg:flex-row h-full">
+                        <div class="lg:w-2/5 overflow-hidden bg-slate-800 relative">
+                            <img src="images/5 image.jpg" alt="Firefighter Simulator" class="w-full h-full object-cover min-h-[250px] opacity-80 group-hover:opacity-100 group-hover:scale-105 transition-all duration-500" />
+                            <div class="absolute inset-0 bg-gradient-to-t from-slate-900 via-transparent to-transparent lg:hidden"></div>
+                            <div class="absolute inset-0 bg-gradient-to-r from-transparent via-transparent to-slate-900 hidden lg:block"></div>
+                        </div>
+                        <div class="p-8 lg:w-3/5 flex flex-col justify-center">
+                            <div class="flex flex-wrap gap-4 items-center text-sm text-slate-400 mb-4">
+                                <div class="flex items-center gap-1.5 bg-slate-800/50 px-3 py-1 rounded-full border border-slate-700">
+                                    <i data-lucide="calendar" class="w-3.5 h-3.5"></i> Jan 2021 – Feb 2021
+                                </div>
+                                <div class="flex items-center gap-1.5 bg-slate-800/50 px-3 py-1 rounded-full border border-slate-700">
+                                    <i data-lucide="building" class="w-3.5 h-3.5"></i> Midnight Works
+                                </div>
+                            </div>
+                            <h3 class="text-2xl font-bold text-white mb-4 group-hover:text-blue-400 transition-colors">
+                                <a href="https://play.google.com/store/apps/details?id=com.crazydevs.firefightersimulator&hl=ru&gl=US">Firefighter Simulator</a>
+                            </h3>
+                            <p class="text-slate-400 leading-relaxed mb-6 text-sm md:text-base">
+                                A mobile simulator of an original game that was popular on PC in 2021. You can splash houses with water, burn out from fire and come late to the mission, because of biggest traffic jam in the game. There are few gameplay mechanics compared with PC game, because of company ideology of this game, but at least that was my first game in midcore genre. I worked on game UI(coding part), assembling assets into game level, driving system, player controls, fire extinguish system.
+                            </p>
+                            <div class="flex flex-wrap gap-2 mt-auto">
+                                <span class="text-xs font-semibold bg-blue-500/10 text-blue-400 px-3 py-1.5 rounded-lg border border-blue-500/20">Unity</span>
+                                <span class="text-xs font-semibold bg-blue-500/10 text-blue-400 px-3 py-1.5 rounded-lg border border-blue-500/20">C#</span>
+                                <span class="text-xs font-semibold bg-blue-500/10 text-blue-400 px-3 py-1.5 rounded-lg border border-blue-500/20">Physics/Controls</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
-        account.actions.init({
-            "Guid": "p2261yM2W15dRPI",
-            "SiteId": 3352454,
-            "AccountType": null,
-            "NextPayDate": null,
-            "IsMonthly": null,
-            "AdvancedMode": null,
-            "Language": "en",
-            "WhoControlsDomain": null,
-            "Email": "andreyduck24@outlook.com",
-            "EmailBounced": null,
-            "FirstName": null,
-            "LastName": null,
-            "Profession": "other",
-            "Ip": "185.172.32.128",
-            "Country": null,
-            "CountryCode": "MD",
-            "UnsubscribeNews": null,
-            "UnsubscribeCampaigns": null,
-            "UnsubscribeCare": null,
-            "MobileVisitedAdminAt": null,
-            "MobileVisitedAdminNrOfDays": null,
-            "CreatedAt": "2022-03-03 12:28:36",
-            "UpgradedAt": null,
-            "DeletedAt": null,
-            "DowngradedAt": null,
-            "PublishedAt": null,
-            "DowngradeToPlan": null,
-            "DowngradedFromPlan": null,
-            "DowngradeNewDomain": null,
-            "VatNr": null,
-            "NrOfPages": 8,
-            "NrOfImages": 9,
-            "NrOfProducts": null,
-            "NrOfPosts": null,
-            "NrOfPwdPages": null,
-            "DigitalAssetSpaceUsed": null,
-            "PageQuota": 10,
-            "ImageQuota": 50,
-            "ProductQuota": 10,
-            "PostQuota": 100,
-            "PwdPageQuota": null,
-            "DigitalAssetQuota": null,
-            "TemplateSettings": null,
-            "MarketingTag": null,
-            "AffiliateKey": null,
-            "DiscountCode": null,
-            "SchoolKey": null,
-            "StudentEndDate": null,
-            "MigrateStatus": null,
-            "MigratedFromVersion": null,
-            "MigratedAt": null,
-            "ColorsSettings": ["rgba(255,255,255,0)", "rgba(255,0,0,0)", "rgba(9,18,255,0.31)", "rgba(85,85,85,1)", "rgba(5,5,5,1)", "rgba(144,144,144,0)", "rgba(208,2,27,1)", "rgba(245,166,35,1)", "rgba(248,231,28,1)", "rgba(139,87,42,1)", "rgba(126,211,33,1)", "rgba(65,117,5,1)", "rgba(189,16,224,1)", "rgba(0,0,0,1)", "rgba(255,255,255,1)", "rgba(0,0,0,0)"],
-            "FailedPaymentAttempts": null,
-            "SocialMedia": null,
-            "MasterAccountId": null,
-            "NrOfClientImages": null,
-            "ClientImageQuota": 10,
-            "Discount": null,
-            "DiscountEndDate": null,
-            "StoreMig": null,
-            "BlogMig": null
-        });
-        posts.actions.init([]);
-        products.actions.init([]);
-        productCategories.actions.init([]);
-        blogCategories.actions.init([]);
-        translations.actions.init([]);
-        lang.actions.init();
-        imageArchive.actions.init([{
-            "Guid": "krgBi6RhZlVeiQdb",
-            "SiteId": 3352454,
-            "Src": "https:\/\/dvqlxo2m2q99q.cloudfront.net\/000_clients\/3352454\/page\/alisa-streltsova-city-1-dc731f.jpg",
-            "Source": null,
-            "FileName": "alisa-streltsova-city-1-dc731f.jpg",
-            "OriginalFileName": "alisa-streltsova-city-1.jpg",
-            "Width": 1920,
-            "Height": 1284,
-            "IFrameSrc": null,
-            "IFrameHeight": null,
-            "IFrameWidth": null,
-            "AddedAt": "2023-04-11 10:36:29",
-            "S3LocationId": 0,
-            "Tags": null
-        }, {
-            "Guid": "m22122zm83SYmzpw",
-            "SiteId": 3352454,
-            "Src": "https:\/\/dvqlxo2m2q99q.cloudfront.net\/000_clients\/3352454\/page\/m22122zm83SYmzpw.png",
-            "Source": null,
-            "FileName": "m22122zm83SYmzpw.png",
-            "OriginalFileName": "petsimcollage.png",
-            "Width": 3840,
-            "Height": 2160,
-            "IFrameSrc": null,
-            "IFrameHeight": null,
-            "IFrameWidth": null,
-            "AddedAt": "2022-05-03 11:57:59",
-            "S3LocationId": 0,
-            "Tags": null
-        }, {
-            "Guid": "j2261n53dNwyIi7",
-            "SiteId": 3352454,
-            "Src": "https:\/\/dvqlxo2m2q99q.cloudfront.net\/000_clients\/3352454\/page\/j2261n53dNwyIi7.png",
-            "Source": null,
-            "FileName": "j2261n53dNwyIi7.png",
-            "OriginalFileName": "abstract-shapewhite.png",
-            "Width": 512,
-            "Height": 512,
-            "IFrameSrc": null,
-            "IFrameHeight": null,
-            "IFrameWidth": null,
-            "AddedAt": "2022-03-03 14:50:41",
-            "S3LocationId": 0,
-            "Tags": null
-        }, {
-            "Guid": "w2261uuTepzQX3G",
-            "SiteId": 3352454,
-            "Src": "https:\/\/dvqlxo2m2q99q.cloudfront.net\/000_clients\/3352454\/page\/w2261uuTepzQX3G.png",
-            "Source": null,
-            "FileName": "w2261uuTepzQX3G.png",
-            "OriginalFileName": "particles.png",
-            "Width": 1920,
-            "Height": 1080,
-            "IFrameSrc": null,
-            "IFrameHeight": null,
-            "IFrameWidth": null,
-            "AddedAt": "2022-03-03 14:34:58",
-            "S3LocationId": 0,
-            "Tags": null
-        }, {
-            "Guid": "l2261S8pQGXVPKe",
-            "SiteId": 3352454,
-            "Src": "https:\/\/dvqlxo2m2q99q.cloudfront.net\/000_clients\/3352454\/page\/l2261S8pQGXVPKe.jpg",
-            "Source": null,
-            "FileName": "l2261S8pQGXVPKe.jpg",
-            "OriginalFileName": "image0010000bw.jpg",
-            "Width": 1920,
-            "Height": 1080,
-            "IFrameSrc": null,
-            "IFrameHeight": null,
-            "IFrameWidth": null,
-            "AddedAt": "2022-03-03 14:11:14",
-            "S3LocationId": 0,
-            "Tags": null
-        }, {
-            "Guid": "d2261k9mho3WRVI",
-            "SiteId": 3352454,
-            "Src": "https:\/\/dvqlxo2m2q99q.cloudfront.net\/000_clients\/3352454\/page\/d2261k9mho3WRVI.png",
-            "Source": null,
-            "FileName": "d2261k9mho3WRVI.png",
-            "OriginalFileName": "avatarforwork.png",
-            "Width": 1920,
-            "Height": 1275,
-            "IFrameSrc": null,
-            "IFrameHeight": null,
-            "IFrameWidth": null,
-            "AddedAt": "2022-03-03 13:24:33",
-            "S3LocationId": 0,
-            "Tags": null
-        }, {
-            "Guid": "e2261DIkp0pw4iT",
-            "SiteId": 3352454,
-            "Src": "https:\/\/dvqlxo2m2q99q.cloudfront.net\/000_clients\/3352454\/page\/e2261DIkp0pw4iT.png",
-            "Source": null,
-            "FileName": "e2261DIkp0pw4iT.png",
-            "OriginalFileName": "imagefordescription.png",
-            "Width": 1024,
-            "Height": 500,
-            "IFrameSrc": null,
-            "IFrameHeight": null,
-            "IFrameWidth": null,
-            "AddedAt": "2022-03-03 12:55:36",
-            "S3LocationId": 0,
-            "Tags": null
-        }, {
-            "Guid": "e2261byqtXbtHgZ",
-            "SiteId": 3352454,
-            "Src": "https:\/\/dvqlxo2m2q99q.cloudfront.net\/000_clients\/3352454\/page\/e2261byqtXbtHgZ.png",
-            "Source": null,
-            "FileName": "e2261byqtXbtHgZ.png",
-            "OriginalFileName": "image0060000.png",
-            "Width": 3840,
-            "Height": 2160,
-            "IFrameSrc": null,
-            "IFrameHeight": null,
-            "IFrameWidth": null,
-            "AddedAt": "2022-03-03 12:54:22",
-            "S3LocationId": 0,
-            "Tags": null
-        }, {
-            "Guid": "i2261N6Ffjejxbi",
-            "SiteId": 3352454,
-            "Src": "https:\/\/dvqlxo2m2q99q.cloudfront.net\/000_clients\/3352454\/page\/i2261N6Ffjejxbi.png",
-            "Source": null,
-            "FileName": "i2261N6Ffjejxbi.png",
-            "OriginalFileName": "unnamed1waifu2xartnoise3scaletta1.png",
-            "Width": 1102,
-            "Height": 620,
-            "IFrameSrc": null,
-            "IFrameHeight": null,
-            "IFrameWidth": null,
-            "AddedAt": "2022-03-03 12:53:53",
-            "S3LocationId": 0,
-            "Tags": null
-        }]);
+            </div>
+        </section>
 
-        pwdPages.actions.init.serverPages([]);
+        <!-- Experience Section -->
+        <section id="experience" class="scroll-mt-32 space-y-12">
+            <div class="space-y-4">
+                <h2 class="text-3xl font-bold text-white flex items-center gap-3">
+                    <i data-lucide="briefcase" class="text-blue-500 w-8 h-8"></i>
+                    Professional Experience
+                </h2>
+                <p class="text-slate-400 max-w-2xl">
+                    A comprehensive timeline of my career, spanning multiple studios, platforms, and game genres.
+                </p>
+            </div>
 
-        utils.miscFront.addBrowserClassToBody();
-    </script>
+            <div class="relative border-l border-slate-800 ml-4 md:ml-6 space-y-12 pb-8">
 
+                <!-- Experience 1 -->
+                <div class="relative pl-8 md:pl-12 group">
+                    <div class="absolute -left-[9px] top-1.5 w-4 h-4 bg-slate-900 border-2 border-slate-600 group-hover:border-blue-500 rounded-full transition-colors duration-300"></div>
+                    <div class="flex flex-col md:flex-row md:items-start md:justify-between gap-2 mb-3">
+                        <div>
+                            <h3 class="text-xl font-bold text-white group-hover:text-blue-400 transition-colors">Unity Developer</h3>
+                            <div class="flex flex-wrap items-center gap-2 text-slate-400 mt-1 text-sm md:text-base">
+                                <span class="font-semibold text-slate-300 flex items-center gap-1.5">
+                                    <i data-lucide="building" class="w-4 h-4 text-slate-500"></i> Fiverr
+                                </span>
+                                <span>•</span>
+                                <span>Self-employed</span>
+                            </div>
+                        </div>
+                        <div class="flex flex-col md:items-end text-sm text-slate-500 mt-2 md:mt-0">
+                            <div class="flex items-center gap-1.5 bg-slate-800/80 px-3 py-1.5 rounded-full border border-slate-700/50 w-fit text-slate-300">
+                                <i data-lucide="calendar" class="w-3.5 h-3.5 text-blue-400"></i> Apr 2022 – Present
+                            </div>
+                            <div class="mt-2 text-xs font-medium text-slate-500 px-1">Remote</div>
+                        </div>
+                    </div>
+                    <ul class="mt-5 space-y-2.5 text-slate-400 text-sm md:text-base">
+                        <li class="flex gap-3 items-start"><span class="text-blue-500 mt-1 opacity-60 text-xs">▹</span><span class="leading-relaxed">Fixing bugs and resolving complex logic issues for various clients.</span></li>
+                        <li class="flex gap-3 items-start"><span class="text-blue-500 mt-1 opacity-60 text-xs">▹</span><span class="leading-relaxed">Creating prototypes and minimum viable products (MVPs).</span></li>
+                        <li class="flex gap-3 items-start"><span class="text-blue-500 mt-1 opacity-60 text-xs">▹</span><span class="leading-relaxed">Integrating various third-party SDKs for mobile games.</span></li>
+                    </ul>
+                    <div class="flex flex-wrap gap-2 mt-6">
+                        <span class="text-xs font-semibold bg-slate-800/40 text-slate-300 px-3 py-1.5 rounded-lg border border-slate-700/50">Gameplay</span>
+                        <span class="text-xs font-semibold bg-slate-800/40 text-slate-300 px-3 py-1.5 rounded-lg border border-slate-700/50">Mobile Games</span>
+                        <span class="text-xs font-semibold bg-slate-800/40 text-slate-300 px-3 py-1.5 rounded-lg border border-slate-700/50">SDK Integration</span>
+                        <span class="text-xs font-semibold bg-slate-800/40 text-slate-300 px-3 py-1.5 rounded-lg border border-slate-700/50">Prototyping</span>
+                    </div>
+                </div>
 
-    <script type="application/ld+json" id="jsonLd"></script>
-    <link rel="alternate" type="application/rss+xml" title="" href="/rss" />
+                <!-- Experience 2 -->
+                <div class="relative pl-8 md:pl-12 group">
+                    <div class="absolute -left-[9px] top-1.5 w-4 h-4 bg-slate-900 border-2 border-slate-600 group-hover:border-blue-500 rounded-full transition-colors duration-300"></div>
+                    <div class="flex flex-col md:flex-row md:items-start md:justify-between gap-2 mb-3">
+                        <div>
+                            <h3 class="text-xl font-bold text-white group-hover:text-blue-400 transition-colors">Unity Developer</h3>
+                            <div class="flex flex-wrap items-center gap-2 text-slate-400 mt-1 text-sm md:text-base">
+                                <span class="font-semibold text-slate-300 flex items-center gap-1.5">
+                                    <i data-lucide="building" class="w-4 h-4 text-slate-500"></i> Revolt Games
+                                </span>
+                                <span>•</span>
+                                <span>Full-time</span>
+                            </div>
+                        </div>
+                        <div class="flex flex-col md:items-end text-sm text-slate-500 mt-2 md:mt-0">
+                            <div class="flex items-center gap-1.5 bg-slate-800/80 px-3 py-1.5 rounded-full border border-slate-700/50 w-fit text-slate-300">
+                                <i data-lucide="calendar" class="w-3.5 h-3.5 text-blue-400"></i> Apr 2024 – Nov 2024
+                            </div>
+                            <div class="mt-2 text-xs font-medium text-slate-500 px-1">Chișinău, Moldova · Remote</div>
+                        </div>
+                    </div>
+                    <ul class="mt-5 space-y-2.5 text-slate-400 text-sm md:text-base">
+                        <li class="flex gap-3 items-start"><span class="text-blue-500 mt-1 opacity-60 text-xs">▹</span><span class="leading-relaxed">Analyze and improve performance across all target platforms.</span></li>
+                        <li class="flex gap-3 items-start"><span class="text-blue-500 mt-1 opacity-60 text-xs">▹</span><span class="leading-relaxed">Creating production-ready games from scratch.</span></li>
+                        <li class="flex gap-3 items-start"><span class="text-blue-500 mt-1 opacity-60 text-xs">▹</span><span class="leading-relaxed">Optimization for different platforms (PC, Playstation, Nintendo Switch).</span></li>
+                    </ul>
+                    <div class="flex flex-wrap gap-2 mt-6">
+                        <span class="text-xs font-semibold bg-slate-800/40 text-slate-300 px-3 py-1.5 rounded-lg border border-slate-700/50">Unity</span>
+                        <span class="text-xs font-semibold bg-slate-800/40 text-slate-300 px-3 py-1.5 rounded-lg border border-slate-700/50">C#</span>
+                        <span class="text-xs font-semibold bg-slate-800/40 text-slate-300 px-3 py-1.5 rounded-lg border border-slate-700/50">Optimization</span>
+                        <span class="text-xs font-semibold bg-slate-800/40 text-slate-300 px-3 py-1.5 rounded-lg border border-slate-700/50">Console Development</span>
+                    </div>
+                </div>
 
-    <!-- source-js -->
-    <script src="https://d2z18g6bj3mwjn.cloudfront.net/pb4/_output/pb4.out.admin.ver.1685082387189.js"></script>
-    <!-- /source-js -->
+                <!-- Experience 3 -->
+                <div class="relative pl-8 md:pl-12 group">
+                    <div class="absolute -left-[9px] top-1.5 w-4 h-4 bg-slate-900 border-2 border-slate-600 group-hover:border-blue-500 rounded-full transition-colors duration-300"></div>
+                    <div class="flex flex-col md:flex-row md:items-start md:justify-between gap-2 mb-3">
+                        <div>
+                            <h3 class="text-xl font-bold text-white group-hover:text-blue-400 transition-colors">C# Developer</h3>
+                            <div class="flex flex-wrap items-center gap-2 text-slate-400 mt-1 text-sm md:text-base">
+                                <span class="font-semibold text-slate-300 flex items-center gap-1.5">
+                                    <i data-lucide="building" class="w-4 h-4 text-slate-500"></i> VICCON S.R.L.
+                                </span>
+                                <span>•</span>
+                                <span>Freelance</span>
+                            </div>
+                        </div>
+                        <div class="flex flex-col md:items-end text-sm text-slate-500 mt-2 md:mt-0">
+                            <div class="flex items-center gap-1.5 bg-slate-800/80 px-3 py-1.5 rounded-full border border-slate-700/50 w-fit text-slate-300">
+                                <i data-lucide="calendar" class="w-3.5 h-3.5 text-blue-400"></i> Jun 2023 – Jan 2024
+                            </div>
+                            <div class="mt-2 text-xs font-medium text-slate-500 px-1">Chișinău, Moldova · Remote</div>
+                        </div>
+                    </div>
+                    <ul class="mt-5 space-y-2.5 text-slate-400 text-sm md:text-base">
+                        <li class="flex gap-3 items-start"><span class="text-blue-500 mt-1 opacity-60 text-xs">▹</span><span class="leading-relaxed">Developed and maintained robust backend logic and software architectures.</span></li>
+                    </ul>
+                    <div class="flex flex-wrap gap-2 mt-6">
+                        <span class="text-xs font-semibold bg-slate-800/40 text-slate-300 px-3 py-1.5 rounded-lg border border-slate-700/50">C#</span>
+                        <span class="text-xs font-semibold bg-slate-800/40 text-slate-300 px-3 py-1.5 rounded-lg border border-slate-700/50">ASP.NET MVC</span>
+                        <span class="text-xs font-semibold bg-slate-800/40 text-slate-300 px-3 py-1.5 rounded-lg border border-slate-700/50">Software Development</span>
+                    </div>
+                </div>
 
-    <script src="https://www.recaptcha.net/recaptcha/api.js?render=explicit" async defer></script>
+                <!-- Experience 4 -->
+                <div class="relative pl-8 md:pl-12 group">
+                    <div class="absolute -left-[9px] top-1.5 w-4 h-4 bg-slate-900 border-2 border-slate-600 group-hover:border-blue-500 rounded-full transition-colors duration-300"></div>
+                    <div class="flex flex-col md:flex-row md:items-start md:justify-between gap-2 mb-3">
+                        <div>
+                            <h3 class="text-xl font-bold text-white group-hover:text-blue-400 transition-colors">Experienced Unity Developer</h3>
+                            <div class="flex flex-wrap items-center gap-2 text-slate-400 mt-1 text-sm md:text-base">
+                                <span class="font-semibold text-slate-300 flex items-center gap-1.5">
+                                    <i data-lucide="building" class="w-4 h-4 text-slate-500"></i> Dragons Lake
+                                </span>
+                                <span>•</span>
+                                <span>Full-time</span>
+                            </div>
+                        </div>
+                        <div class="flex flex-col md:items-end text-sm text-slate-500 mt-2 md:mt-0">
+                            <div class="flex items-center gap-1.5 bg-slate-800/80 px-3 py-1.5 rounded-full border border-slate-700/50 w-fit text-slate-300">
+                                <i data-lucide="calendar" class="w-3.5 h-3.5 text-blue-400"></i> May 2022 – Apr 2023
+                            </div>
+                            <div class="mt-2 text-xs font-medium text-slate-500 px-1">Chișinău, Moldova</div>
+                        </div>
+                    </div>
+                    <ul class="mt-5 space-y-2.5 text-slate-400 text-sm md:text-base">
+                        <li class="flex gap-3 items-start"><span class="text-blue-500 mt-1 opacity-60 text-xs">▹</span><span class="leading-relaxed">Working on a game and generic code, analyzing and improving performance across target platforms.</span></li>
+                        <li class="flex gap-3 items-start"><span class="text-blue-500 mt-1 opacity-60 text-xs">▹</span><span class="leading-relaxed">Develop new and maintain existing code base for current and future projects.</span></li>
+                        <li class="flex gap-3 items-start"><span class="text-blue-500 mt-1 opacity-60 text-xs">▹</span><span class="leading-relaxed">Contribute original ideas towards all aspects of game production and development.</span></li>
+                        <li class="flex gap-3 items-start"><span class="text-blue-500 mt-1 opacity-60 text-xs">▹</span><span class="leading-relaxed">Work independently to complete assigned projects with limited supervision.</span></li>
+                    </ul>
+                    <div class="flex flex-wrap gap-2 mt-6">
+                        <span class="text-xs font-semibold bg-slate-800/40 text-slate-300 px-3 py-1.5 rounded-lg border border-slate-700/50">Unity</span>
+                        <span class="text-xs font-semibold bg-slate-800/40 text-slate-300 px-3 py-1.5 rounded-lg border border-slate-700/50">Gameplay</span>
+                        <span class="text-xs font-semibold bg-slate-800/40 text-slate-300 px-3 py-1.5 rounded-lg border border-slate-700/50">C#</span>
+                        <span class="text-xs font-semibold bg-slate-800/40 text-slate-300 px-3 py-1.5 rounded-lg border border-slate-700/50">Optimization</span>
+                    </div>
+                </div>
 
-    <script id="stripe-js" src="https://js.stripe.com/v3/" async onload="checkStripeParam()"></script>
+                <!-- Experience 5 -->
+                <div class="relative pl-8 md:pl-12 group">
+                    <div class="absolute -left-[9px] top-1.5 w-4 h-4 bg-slate-900 border-2 border-slate-600 group-hover:border-blue-500 rounded-full transition-colors duration-300"></div>
+                    <div class="flex flex-col md:flex-row md:items-start md:justify-between gap-2 mb-3">
+                        <div>
+                            <h3 class="text-xl font-bold text-white group-hover:text-blue-400 transition-colors">Unity Dev</h3>
+                            <div class="flex flex-wrap items-center gap-2 text-slate-400 mt-1 text-sm md:text-base">
+                                <span class="font-semibold text-slate-300 flex items-center gap-1.5">
+                                    <i data-lucide="building" class="w-4 h-4 text-slate-500"></i> OurView Games
+                                </span>
+                                <span>•</span>
+                                <span>Full-time</span>
+                            </div>
+                        </div>
+                        <div class="flex flex-col md:items-end text-sm text-slate-500 mt-2 md:mt-0">
+                            <div class="flex items-center gap-1.5 bg-slate-800/80 px-3 py-1.5 rounded-full border border-slate-700/50 w-fit text-slate-300">
+                                <i data-lucide="calendar" class="w-3.5 h-3.5 text-blue-400"></i> Apr 2021 – Apr 2022
+                            </div>
+                            <div class="mt-2 text-xs font-medium text-slate-500 px-1">Remote</div>
+                        </div>
+                    </div>
+                    <ul class="mt-5 space-y-2.5 text-slate-400 text-sm md:text-base">
+                        <li class="flex gap-3 items-start"><span class="text-blue-500 mt-1 opacity-60 text-xs">▹</span><span class="leading-relaxed">Create mobile game prototypes from scratch.</span></li>
+                        <li class="flex gap-3 items-start"><span class="text-blue-500 mt-1 opacity-60 text-xs">▹</span><span class="leading-relaxed">Maintain good performance and optimize projects for main platforms.</span></li>
+                        <li class="flex gap-3 items-start"><span class="text-blue-500 mt-1 opacity-60 text-xs">▹</span><span class="leading-relaxed">Integrate mobile SDKs (such as AppLovin MAX, Amplitude, etc.).</span></li>
+                    </ul>
+                    <div class="flex flex-wrap gap-2 mt-6">
+                        <span class="text-xs font-semibold bg-slate-800/40 text-slate-300 px-3 py-1.5 rounded-lg border border-slate-700/50">Gameplay</span>
+                        <span class="text-xs font-semibold bg-slate-800/40 text-slate-300 px-3 py-1.5 rounded-lg border border-slate-700/50">Mobile Games</span>
+                        <span class="text-xs font-semibold bg-slate-800/40 text-slate-300 px-3 py-1.5 rounded-lg border border-slate-700/50">AppLovin</span>
+                        <span class="text-xs font-semibold bg-slate-800/40 text-slate-300 px-3 py-1.5 rounded-lg border border-slate-700/50">Amplitude SDK</span>
+                    </div>
+                </div>
 
-    <script id="paypal-sdk" src="https://www.paypal.com/sdk/js?client-id=AYO8o6k4SMRJev3eixfQHzuLwukU4u_lduPqsAURE2Q0oO-GR0AtVs1soIT5KuAmuVcI1riCs3U7XPq8&currency=USD&commit=true&disable-funding=credit,card" async defer></script>
+                <!-- Experience 6 -->
+                <div class="relative pl-8 md:pl-12 group">
+                    <div class="absolute -left-[9px] top-1.5 w-4 h-4 bg-slate-900 border-2 border-slate-600 group-hover:border-blue-500 rounded-full transition-colors duration-300"></div>
+                    <div class="flex flex-col md:flex-row md:items-start md:justify-between gap-2 mb-3">
+                        <div>
+                            <h3 class="text-xl font-bold text-white group-hover:text-blue-400 transition-colors">Unity Developer</h3>
+                            <div class="flex flex-wrap items-center gap-2 text-slate-400 mt-1 text-sm md:text-base">
+                                <span class="font-semibold text-slate-300 flex items-center gap-1.5">
+                                    <i data-lucide="building" class="w-4 h-4 text-slate-500"></i> Midnight Works
+                                </span>
+                                <span>•</span>
+                                <span>Full-time</span>
+                            </div>
+                        </div>
+                        <div class="flex flex-col md:items-end text-sm text-slate-500 mt-2 md:mt-0">
+                            <div class="flex items-center gap-1.5 bg-slate-800/80 px-3 py-1.5 rounded-full border border-slate-700/50 w-fit text-slate-300">
+                                <i data-lucide="calendar" class="w-3.5 h-3.5 text-blue-400"></i> Sep 2020 – Apr 2021
+                            </div>
+                            <div class="mt-2 text-xs font-medium text-slate-500 px-1">Chișinău, Moldova · On-site</div>
+                        </div>
+                    </div>
+                    <ul class="mt-5 space-y-2.5 text-slate-400 text-sm md:text-base">
+                        <li class="flex gap-3 items-start"><span class="text-blue-500 mt-1 opacity-60 text-xs">▹</span><span class="leading-relaxed">Create hyper-casual prototypes from scratch.</span></li>
+                        <li class="flex gap-3 items-start"><span class="text-blue-500 mt-1 opacity-60 text-xs">▹</span><span class="leading-relaxed">Optimize game performance and ensure smooth framerates.</span></li>
+                        <li class="flex gap-3 items-start"><span class="text-blue-500 mt-1 opacity-60 text-xs">▹</span><span class="leading-relaxed">Integration of popular mobile SDKs and advertising networks.</span></li>
+                    </ul>
+                    <div class="flex flex-wrap gap-2 mt-6">
+                        <span class="text-xs font-semibold bg-slate-800/40 text-slate-300 px-3 py-1.5 rounded-lg border border-slate-700/50">Unity</span>
+                        <span class="text-xs font-semibold bg-slate-800/40 text-slate-300 px-3 py-1.5 rounded-lg border border-slate-700/50">C#</span>
+                        <span class="text-xs font-semibold bg-slate-800/40 text-slate-300 px-3 py-1.5 rounded-lg border border-slate-700/50">Hyper-casual</span>
+                        <span class="text-xs font-semibold bg-slate-800/40 text-slate-300 px-3 py-1.5 rounded-lg border border-slate-700/50">Mobile Games</span>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+    </main>
 
     <script>
-        if (utils.environment.isTouch() && utils.environment.wWidth() < 1000) {
-            adminApi.adminVisit().then(data => {});
-        }
-    </script>
+        // Initialize Lucide icons
+        lucide.createIcons();
 
-
-    <script>
-        (function(w, d, t, r, u) {
-            var f, n, i;
-            w[u] = w[u] || [], f = function() {
-                var o = {
-                    ti: "137025235",
-                    enableAutoSpaTracking: true
-                };
-                o.q = w[u], w[u] = new UET(o), w[u].push("pageLoad")
-            }, n = d.createElement(t), n.src = r, n.async = 1, n.onload = n.onreadystatechange = function() {
-                var s = this.readyState;
-                s && s !== "loaded" && s !== "complete" || (f(), n.onload = n.onreadystatechange = null)
-            }, i = d.getElementsByTagName(t)[0], i.parentNode.insertBefore(n, i)
-        })(window, document, "script", "//bat.bing.com/bat.js", "uetq");
-    </script>
-
-    <!-- Stripe -->
-    <script>
-        function checkStripeParam() {
-            //This part is for Manual Stripe Payment
-            const urlParams = new URLSearchParams(window.location.search);
-            if (urlParams) {
-                const clientSecret = urlParams.get('payment_intent_client_secret');
-                if (clientSecret) {
-                    window.history.replaceState({}, document.title, "/pb4/admin#/");
-                    let $stripe = Stripe(Vue.prototype.$stripeKey);
-                    $stripe.retrievePaymentIntent(clientSecret).then(function(response) {
-                        if (response.paymentIntent && response.paymentIntent.status === 'succeeded') {
-                            frontApp.alert("<div class='alertHeader'>" + translations.state.ThankYou + "</div>");
-                        } else {
-                            //Message If Not Success
-                        }
-                    });
-                }
+        // Handle navigation and active states
+        function scrollToSection(id) {
+            const section = document.getElementById(id);
+            if (section) {
+                section.scrollIntoView({ behavior: 'smooth' });
+                updateActiveNav(id);
             }
         }
-    </script>
 
-    <!-- Meta Pixel Code 2 -->
-    <script>
-        ! function(f, b, e, v, n, t, s) {
-            if (f.fbq) return;
-            n = f.fbq = function() {
-                n.callMethod ?
-                    n.callMethod.apply(n, arguments) : n.queue.push(arguments)
-            };
-            if (!f._fbq) f._fbq = n;
-            n.push = n;
-            n.loaded = !0;
-            n.version = '2.0';
-            n.queue = [];
-            t = b.createElement(e);
-            t.async = !0;
-            t.src = v;
-            s = b.getElementsByTagName(e)[0];
-            s.parentNode.insertBefore(t, s)
-        }(window, document, 'script',
-            'https://connect.facebook.net/en_US/fbevents.js');
-        fbq('init', '1288246968683802');
+        function updateActiveNav(id) {
+            const links = document.querySelectorAll('.nav-link');
+            links.forEach(link => {
+                if (link.dataset.target === id) {
+                    link.classList.add('bg-blue-600', 'text-white');
+                    link.classList.remove('text-slate-400', 'hover:bg-slate-800', 'hover:text-white');
+                } else {
+                    link.classList.remove('bg-blue-600', 'text-white');
+                    link.classList.add('text-slate-400', 'hover:bg-slate-800', 'hover:text-white');
+                }
+            });
+        }
     </script>
-    <img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=1288246968683802&ev=PageView&noscript=1" />
-    <!-- End Meta Pixel Code -->
-
 </body>
-
 </html>
